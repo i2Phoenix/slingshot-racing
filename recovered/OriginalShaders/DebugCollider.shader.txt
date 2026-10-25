@@ -1,0 +1,52 @@
+Shader "Editor/RedAlpha" {
+SubShader { 
+ Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZWrite Off
+  Cull Off
+  Blend SrcAlpha OneMinusSrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+
+attribute vec4 _glesVertex;
+void main ()
+{
+  highp vec4 tmpvar_1;
+  tmpvar_1.w = 1.0;
+  tmpvar_1.xyz = _glesVertex.xyz;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_1);
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+void main ()
+{
+  gl_FragData[0] = vec4(1.0, 0.0, 0.0, 0.25);
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

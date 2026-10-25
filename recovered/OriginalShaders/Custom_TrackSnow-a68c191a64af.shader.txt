@@ -1,0 +1,73 @@
+Shader "Custom/TrackSnow" {
+Properties {
+ _TintColor ("Tint Color", Vector) = (1,1,1,1)
+ _MainTex ("Particle Texture", 2D) = "white" {}
+}
+SubShader { 
+ Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZWrite Off
+  Cull Off
+  Blend SrcAlpha OneMinusSrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec4 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+
+uniform highp vec4 _TintColor;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  highp vec4 tmpvar_2;
+  tmpvar_2.w = 1.0;
+  tmpvar_2.xyz = _glesVertex.xyz;
+  highp vec4 tmpvar_3;
+  tmpvar_3 = (_glesColor * _TintColor);
+  tmpvar_1 = tmpvar_3;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_2);
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+  xlv_TEXCOORD1 = tmpvar_1;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec4 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D _MainTex;
+void main ()
+{
+  lowp vec4 r;
+  r.xyz = xlv_TEXCOORD1.xyz;
+  r.w = (xlv_TEXCOORD1.w * texture2D (_MainTex, xlv_TEXCOORD0).x);
+  gl_FragData[0] = r;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

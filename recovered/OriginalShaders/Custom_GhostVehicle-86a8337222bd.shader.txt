@@ -1,0 +1,135 @@
+Shader "Custom/GhostVehicle" {
+Properties {
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+ _Lightmap ("Lightmap (RGB)", 2D) = "lightmap" { TexGen ObjectLinear }
+ _UOffset ("UOffset", Float) = 0
+}
+SubShader { 
+ Tags { "QUEUE"="Geometry+40" "RenderType"="Opaque" }
+ UsePass "Custom/DepthFill/BASE"
+ Pass {
+  Tags { "QUEUE"="Geometry+40" "RenderType"="Opaque" }
+  ZWrite Off
+  Blend SrcAlpha OneMinusSrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec4 xlv_TEXCOORD2;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform highp vec4 p_lmMatR2;
+uniform highp vec4 p_lmMatR1;
+
+uniform highp vec4 g_highlightDirection;
+uniform highp vec3 _WorldSpaceCameraPos;
+uniform highp mat4 _World2Object;
+uniform highp float _UOffset;
+uniform highp mat4 _Object2World;
+uniform highp float _Alpha;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec3 _glesNormal;
+attribute vec4 _glesVertex;
+void main ()
+{
+  vec3 tmpvar_1;
+  tmpvar_1 = normalize (_glesNormal);
+  highp vec2 mainUV;
+  highp vec4 tmpvar_2;
+  mediump vec2 tmpvar_3;
+  mediump vec2 tmpvar_4;
+  lowp vec4 tmpvar_5;
+  highp vec4 tmpvar_6;
+  tmpvar_6.w = 1.0;
+  tmpvar_6.xyz = _glesVertex.xyz;
+  highp vec4 tmpvar_7;
+  tmpvar_7 = (gl_ModelViewProjectionMatrix * tmpvar_6);
+  tmpvar_2 = tmpvar_7;
+  tmpvar_2.z = (tmpvar_7.z - 0.005);
+  mainUV = _glesMultiTexCoord0.xy;
+  highp float tmpvar_8;
+  if ((_glesMultiTexCoord0.y < 0.75)) {
+    tmpvar_8 = _UOffset;
+  } else {
+    tmpvar_8 = 0.0;
+  };
+  mainUV.x = (_glesMultiTexCoord0.x + tmpvar_8);
+  tmpvar_3 = mainUV;
+  highp vec4 tmpvar_9;
+  tmpvar_9.w = 1.0;
+  tmpvar_9.xyz = _glesVertex.xyz;
+  highp float tmpvar_10;
+  tmpvar_10 = dot ((p_lmMatR1 * _Object2World), tmpvar_9);
+  tmpvar_4.x = tmpvar_10;
+  highp vec4 tmpvar_11;
+  tmpvar_11.w = 1.0;
+  tmpvar_11.xyz = _glesVertex.xyz;
+  highp float tmpvar_12;
+  tmpvar_12 = dot ((p_lmMatR2 * _Object2World), tmpvar_11);
+  tmpvar_4.y = tmpvar_12;
+  mat3 tmpvar_13;
+  tmpvar_13[0] = _World2Object[0].xyz;
+  tmpvar_13[1] = _World2Object[1].xyz;
+  tmpvar_13[2] = _World2Object[2].xyz;
+  highp vec4 tmpvar_14;
+  tmpvar_14.w = 1.0;
+  tmpvar_14.xyz = _WorldSpaceCameraPos;
+  highp float tmpvar_15;
+  tmpvar_15 = min (1.0, (1.75 - (1.75 * dot (normalize ((_World2Object * tmpvar_14).xyz), tmpvar_1))));
+  highp float tmpvar_16;
+  tmpvar_16 = ((max (dot (-((tmpvar_13 * g_highlightDirection.xyz)), tmpvar_1), 0.0) * 0.6) + 0.4);
+  highp float tmpvar_17;
+  tmpvar_17 = (tmpvar_16 + (tmpvar_16 * tmpvar_15));
+  highp float tmpvar_18;
+  tmpvar_18 = (((tmpvar_15 * 0.6) + 0.4) * _Alpha);
+  tmpvar_5.xyz = vec3(tmpvar_17);
+  tmpvar_5.w = tmpvar_18;
+  gl_Position = tmpvar_2;
+  xlv_TEXCOORD0 = tmpvar_3;
+  xlv_TEXCOORD1 = tmpvar_4;
+  xlv_TEXCOORD2 = tmpvar_5;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec4 xlv_TEXCOORD2;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform highp vec4 g_highlightDirection;
+uniform sampler2D _MainTex;
+uniform sampler2D _Lightmap;
+void main ()
+{
+  lowp float lightmapScale;
+  highp float tmpvar_1;
+  tmpvar_1 = g_highlightDirection.w;
+  lightmapScale = tmpvar_1;
+  lowp vec4 tmpvar_2;
+  tmpvar_2.xyz = ((texture2D (_MainTex, xlv_TEXCOORD0).xyz * xlv_TEXCOORD2.xyz) * (lightmapScale * texture2D (_Lightmap, xlv_TEXCOORD1).xyz));
+  tmpvar_2.w = xlv_TEXCOORD2.w;
+  gl_FragData[0] = tmpvar_2;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

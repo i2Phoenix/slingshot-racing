@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!43 &4300000
+Mesh:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: GR_Tower_Glow_Left_003
+  m_SubMeshes:
+  - firstByte: 0
+    indexCount: 32
+    isTriStrip: 2
+    triangleCount: 22
+    firstVertex: 0
+    vertexCount: 24
+    localAABB:
+      m_Center: {x: -2.0849967, y: 0.13325036, z: 0.3463873}
+      m_Extent: {x: 1.5367373, y: 3.3165078, z: 0.26644763}
+  m_MeshCompression: 0
+  m_IndexBuffer: 000001000200030004000500040006000700070002000200020004000800090008000a000b000a000c000d000e000f0010001100120013001400150016001700
+  m_Skin: []
+  m_BindPose: []
+  m_VertexData:
+    m_CurrentChannels: 9
+    m_VertexCount: 24
+    m_Streams[0]:
+      channelMask: 9
+      offset: 0
+      stride: 20
+      align: 16
+    m_Streams[1]:
+      channelMask: 0
+      offset: 0
+      stride: 0
+      align: 16
+    m_Streams[2]:
+      channelMask: 0
+      offset: 0
+      stride: 0
+      align: 16
+    m_Streams[3]:
+      channelMask: 0
+      offset: 0
+      stride: 0
+      align: 16
+    m_DataSize: 480
+    _typelessdata: b59447c0653736c067b7a33dd4efa43e185f7c3c3d273cc050f43ec0d46bcd3d1896843ed12f6f3c870030c0383c1dc09740803e89d0a53e0acb1f3e628286bf7eba4bc026fbcf3e342d833b526a773eea4bdcbfc5bdc8bfe45d0b3fa772a83ecaebca3e412b68bfa1a241c034b0e63e6ce4ea3be73d9e3e84a199bfb45ea7bfa0eb173ffa62823e58d10b3f744ca8bf2fb998bfc0e21c3f1f0fa43e86110c3fa94949c0739cefbf1e05823e4c79c43ee6f91d3e50a200c086f199bf9d7b0a3f5e60c33e97a2c93e8b2a10c032cf2cbf12be093f9151e33ed744c83e61815fc07fa784bf2a80833e9bd0e43ebc87223e7dca67c0980befbdc71b853e5ee7023fbc87223ee30617c0f899a7bd4af0083f5ee7023fd744c83e25d560c0d72b4f3fd9d7863e6a89143fbc87223e7f1714c02d85073f3912083f6a89143fd744c83e99df4bc0e6a4d23f68b4883e34ee253fbc87223ec9de07c0e2d68b3fed23073f1db3273fd744c83e2b182bc0b9ff164087b18a3e5dbf383fbc87223e30c4e6bf7c6ccb3f6625063f5dbf383fd744c83ef29500c055103b4016cf8c3eb1fd4c3fbc87223ec777afbfaea8ff3f9416053fb1fd4c3fd744c83e936876bfd7c85c40bdbe8e3ed3327c3fbc87223eb85a0cbfe7491c40c61e043fd3327c3fd744c83e
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_BindPoses:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_Colors:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+  m_LocalAABB:
+    m_Center: {x: -2.0849967, y: 0.13325036, z: 0.3463873}
+    m_Extent: {x: 1.5367373, y: 3.3165078, z: 0.26644763}
+  m_MeshUsageFlags: 0
+  m_MeshOptimized: 1

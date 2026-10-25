@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70d3a7bb9137bb9c76d408ec50f6923, type: 1}
+  m_Name: Track_MAH_5.4_Blockout
+  m_splineData:
+  - m_name: TrackSpline
+    m_normalisedSpeeds:
+    - 0.9832068
+    - 0.956988
+    - 0.87601805
+    - 0.84154516
+    - 0.85656834
+    - 1.0968843
+    - 1.2000737
+    - 1.0421379
+    - 0.9725529
+    - 0.8698946
+    - 0.8362901
+    - 0.9389484
+    - 0.9191505
+    - 0.8263869
+    - 0.86801344
+    - 0.90674627
+    - 1.0716093
+    - 1.0656447
+    - 0.86881864
+    - 0.8630072
+    - 1.1746484
+    - 1.599759
+    - 1.7239087
+    - 1.5939478
+    - 1.3444252
+    - 1.0933938
+    - 0.9832068
+    m_segmentLength: 9.703783

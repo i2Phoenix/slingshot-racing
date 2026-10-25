@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!43 &4300000
+Mesh:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: GR_Tower_Glow_Left_004
+  m_SubMeshes:
+  - firstByte: 0
+    indexCount: 55
+    isTriStrip: 2
+    triangleCount: 36
+    firstVertex: 0
+    vertexCount: 46
+    localAABB:
+      m_Center: {x: -4.172325E-07, y: -3.5762787E-07, z: 0.021151654}
+      m_Extent: {x: 1.9910607, y: 1.9608126, z: 0.1000148}
+  m_MeshCompression: 0
+  m_IndexBuffer: 0000000001000200030004000500060007000800090009000a000a000b000c000d000e000f001000110012001300130014001400150016001700180019001a001b001c001d001d001e001e001f002000210022002300230024002400250026002700280029002a002b002c002d00
+  m_Skin: []
+  m_BindPose: []
+  m_VertexData:
+    m_CurrentChannels: 9
+    m_VertexCount: 46
+    m_Streams[0]:
+      channelMask: 9
+      offset: 0
+      stride: 20
+      align: 16
+    m_Streams[1]:
+      channelMask: 0
+      offset: 0
+      stride: 0
+      align: 16
+    m_Streams[2]:
+      channelMask: 0
+      offset: 0
+      stride: 0
+      align: 16
+    m_Streams[3]:
+      channelMask: 0
+      offset: 0
+      stride: 0
+      align: 16
+    m_DataSize: 920
+    _typelessdata: bb2a85bf147b5fbff525f83de0bbbe3ea7d8c23e0f3bc3bf76d1a3bfcd82a1bde0bbbe3e2990903e7b5aa3bfeed2edbef525f83d5a2ec63ebdd8c23e6e7cefbf05552ebfcd82a1bd5c2ec63e3790903e57d6adbf27ba93b41e26f83df05bce3ecfd8c23e17dbfebf81a1e8b4cd82a1bd7aa7cd3e4c90903e855aa3bfa9d2ed3ef525f83d6659d43ee2d8c23e757cefbfd6542e3feb82a1bddc0dd53e6390903ec22a85bf1c7b5f3ff525f83d7252dc3ef5d8c23e1c3bc3bf75d1a33feb82a1bd7452dc3e7190903e17db7e3f2fb6dc3f0083a1bde434dc3ecc90903e52d62d3f258c963ff525f83de434dc3e4ad9c23e6505b13ee5fbfa3f0083a1bd9002d53eb790903e057e713e3e32ab3ff525f83d4050d43e34d9c23e5905b1bee5fbfa3f0083a1bd22c6cd3e9d90903ef07d71be3e32ab3ff525f83dc074ce3e26d9c23e15db7ebf2cb6dc3f0083a1bdfabec63e8b90903e54d62dbf208c963ff525f83df8bec63e10d9c23e1c3bc3bf75d1a33feb82a1bd54bdbe3e7190903ec22a85bf1c7b5f3ff525f83d54bdbe3ef5d8c23e757cef3feb542ebfcd82a1bd8644dc3e2391903e855aa33fced2edbe1e26f83d8444dc3ea7d9c23e10dbfe3f99b85335cd82a1bdf003d53e1491903e52d6ad3fbc683635f525f83d5e51d43e91d9c23e757cef3fee542e3feb82a1bd8ab2cd3ef890903e855aa33fcad2ed3ef525f83de464ce3e78d9c23e173bc33f79d1a33feb82a1bd8665c63ee290903ebd2a853f277b5f3ff525f83d8465c63e62d9c23e17db7e3f2fb6dc3f0083a1bd84babe3ecc90903e52d62d3f258c963ff525f83d84babe3e4ad9c23e21db7e3f27b6dcbfb882a1bd9229cf3ed28f903e57d62d3f198c96bff525f83d9229cf3e54d8c23e203bc33f6dd1a3bfcd82a1bd50e7c83ebc8f903ec32a853f067b5fbf1e26f83d50e7c83e3dd8c23e757cef3feb542ebfcd82a1bdf498c13e9f8f903e855aa33fced2edbe1e26f83df498c13e23d8c23e0f3bc3bf76d1a3bfcd82a1bd8449dc3e2990903ebb2a85bf147b5fbff525f83d8249dc3ea7d8c23e07db7ebf33b6dcbfb882a1bd220cd53e1090903e44d62dbf2b8c96bf1e26f83d6668d43e94d8c23e3405b1beebfbfabfb882a1bd76c2cd3efd8f903ebd7d71be4132abbf1e26f83d125fce3e7ad8c23e8005b13ee5fbfabfb882a1bd44fbc53ee38f903e227e713e3b32abbf1e26f83d44fbc53e66d8c23e21db7e3f27b6dcbfb882a1bd8cafbe3ed28f903e57d62d3f198c96bff525f83d8aafbe3e54d8c23e
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_BindPoses:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_Colors:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+  m_LocalAABB:
+    m_Center: {x: -4.172325E-07, y: -3.5762787E-07, z: 0.021151654}
+    m_Extent: {x: 1.9910607, y: 1.9608126, z: 0.1000148}
+  m_MeshUsageFlags: 0
+  m_MeshOptimized: 1

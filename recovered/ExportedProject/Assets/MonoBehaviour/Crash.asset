@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: Crash
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: 3d060e85a388e0e4488545105f053f2b, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 60e34db47fd30cd44aaae654e45722cd, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 1a5f6da79f118234f91e04d6fae16310, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 5cb331ace42940f4c99f2736d00136ac, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: a79d79c31d3c9b348b6dcd0b2c388d69, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 746f148e3f8373241905ecc764ca52ca, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 3b77b1906a65d14479da9584cdd52b83, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 79fad136405bc4e48aa6a4e3c9cba9b2, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: e2a668fc7a9bff74591ffef8e01310ff, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 5a546ded1d0ca5849ba85a5662764cf5, type: 1}
+    m_volumeScale: 1
+  m_priority: 128
+  m_interuptEqualPriority: 0
+  m_pitch: 1
+  m_volumeScale: 0.35

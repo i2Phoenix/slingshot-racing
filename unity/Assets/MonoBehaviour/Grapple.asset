@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: Grapple
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: 65da287bc46699f4e9ea2f6ba457ab7f, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: f8271b24024df9147be7791e25f85510, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: ddd49633463d1d14fa36c49bffa7be7e, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: a83dff47146857046938412b4cb6ecd4, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 9283e116375e642408ce07bce4970461, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 513d239552865db4692abe003944019f, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: d8635b9a22ca4e34a8b5ae34d5c39571, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: ba2e16e366ab4ae499b0b75c8751078e, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 664dbac6605cb244fb261083b082e07a, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 55dc469bc00ce494ab72c65b03041473, type: 1}
+    m_volumeScale: 1
+  m_priority: 64
+  m_interuptEqualPriority: 1
+  m_pitch: 1
+  m_volumeScale: 0.2

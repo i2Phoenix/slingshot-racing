@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &147589
+GameObject:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 479954}
+  - 114: {fileID: 1509266}
+  - 114: {fileID: 1205782}
+  - 114: {fileID: 2661526}
+  m_Layer: 11
+  m_Name: PipeGUI_ResultsSparks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &479954
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &1509266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24e1694065e35b54c80b35343362e4f, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
+  minSize: 1
+  maxSize: 1.5
+  minEnergy: 0.8
+  maxEnergy: 1.2
+  minEmission: 100
+  maxEmission: 100
+  worldVelocity: {x: 0, y: 15, z: 0}
+  localVelocity: {x: 0, y: 0, z: 0}
+  rndVelocity: {x: 300, y: 300, z: 0}
+  emitterVelocityScale: 0
+  tangentVelocity: {x: 0, y: 0, z: 0}
+  angularVelocity: 0
+  rndAngularVelocity: 0
+  rndRotation: 0
+  emit: 1
+  useWorldSpace: 0
+  oneShot: 1
+  ellipsoid: {x: 0, y: 0, z: 0}
+  minEmitterRange: 0
+--- !u!114 &1205782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a724cb734291dbe847bf942668ab287, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
+  worldRotationAxis: {x: 0, y: 0, z: 0}
+  localRotationAxis: {x: 0, y: 0, z: 0}
+  sizeGrow: 0
+  rndForce: {x: 0, y: 0, z: 0}
+  force: {x: 0, y: -100, z: 0}
+  damping: 0.1
+  stopSimulation: 0
+  autodestruct: 0
+  doesAnimateColor: 1
+  colorAnimation:
+  - {r: 1.0, g: 0.9098039215686274, b: 0.48627450980392156, a: 0.0392156862745098}
+  - {r: 0.996078431372549, g: 0.9058823529411765, b: 0.48627450980392156, a: 0.7058823529411765}
+  - {r: 0.9921568627450981, g: 0.9019607843137255, b: 0.48627450980392156, a: 1.0}
+  - {r: 0.9882352941176471, g: 0.8980392156862745, b: 0.48627450980392156, a: 0.7058823529411765}
+  - {r: 0.984313725490196, g: 0.8941176470588236, b: 0.48627450980392156, a: 0.0392156862745098}
+--- !u!114 &2661526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1170ca8d6223c94a8ada4e2111b886, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
+  sharedMaterial: {fileID: 2100000, guid: b9fd809bb7f74f24d855298f485981b2, type: 2}
+  cameraVelocityScale: 0
+  particleRenderMode: 3
+  lengthScale: 2
+  velocityScale: 0.08
+  maxParticleSize: 0.5
+  uvAnimationXTile: 1
+  uvAnimationYTile: 1
+  uvAnimationCycles: 1
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 147589}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

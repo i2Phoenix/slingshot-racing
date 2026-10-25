@@ -1,0 +1,107 @@
+{ "version": 3, "platformSettings": [
+		
+		{	"match": [ { "gpu": "NVIDIA Tegra" } ],
+			"settings": { "disableSimd": true, }
+		}
+						
+		{	"match": [ { "gpuVendor": "Qualcomm" },	],
+			"settings": { "constantExtraction": true, }
+		}
+		
+		{	"match": [ { "resolution": "low" },
+								 { "resolution": "medium" } ],
+			"settings": {
+				"shaderLod": "medium",
+				"grappleSteam": false,
+			}
+		}
+			
+		{	"match": [	{ "gpu": "Mali-400 MP" },
+									{ "gpu": "Adreno (TM) 305" },
+									{ "gpu": "Adreno (TM) 225" },
+									{ "gpu": "Adreno (TM) 220" } ],
+			"settings": {
+				"shaderLod": "medium",
+				"particleEffects": "medium",
+			}
+		}
+		
+		{	"match": [	{ "gpu": "Adreno 205" },
+									{ "gpu": "Adreno (TM) 205" },
+									{ "gpu": "Adreno (TM) 203" },
+									{ "gpu": "PowerVR SGX 530" },
+									{ "gpu": "PowerVR SGX 531" },
+									{ "gpu": "PowerVR SGX 531T" },
+									{ "gpu": "PowerVR SGX 535" },
+									{ "gpu": "PowerVR SGX 540" },
+									{ "gpu": "NVIDIA Tegra" } ],
+			"settings": {
+				"shaderLod": "low",
+				"particleEffects": "low",
+				"clouds": false,
+				"trailShadows": false,
+				"windSnow": false,
+				"grappleSteam": false
+			}
+		}
+		
+		{	"match": [	{ "gpu": "Adreno 205", "resolution": "high" },
+						{ "gpu": "Adreno 205", "resolution": "extrahigh" },
+						{ "gpu": "Adreno (TM) 205", "resolution": "high" },
+						{ "gpu": "Adreno (TM) 205", "resolution": "extrahigh" },
+						{ "gpu": "Adreno (TM) 203", "resolution": "high" },
+						{ "gpu": "Adreno (TM) 203", "resolution": "extrahigh" },
+						{ "gpu": "PowerVR SGX 530", "resolution": "high" },
+						{ "gpu": "PowerVR SGX 530", "resolution": "extrahigh" },
+						{ "gpu": "PowerVR SGX 531", "resolution": "high" },
+						{ "gpu": "PowerVR SGX 531", "resolution": "extrahigh" },
+						{ "gpu": "PowerVR SGX 531T", "resolution": "high" },
+						{ "gpu": "PowerVR SGX 531T", "resolution": "extrahigh" },
+						{ "gpu": "PowerVR SGX 535", "resolution": "high" },
+						{ "gpu": "PowerVR SGX 535", "resolution": "extrahigh" },
+						{ "gpu": "PowerVR SGX 540", "resolution": "high" },
+						{ "gpu": "PowerVR SGX 540", "resolution": "extrahigh" },
+						{ "gpu": "NVIDIA Tegra", "resolution": "high" },
+						{ "gpu": "NVIDIA Tegra", "resolution": "extrahigh" } ],
+			"settings": {
+				"nightLightEffects": false,
+				"lightShafts": false
+			}
+		}
+		
+		{	"match": [	{ "gpu": "Adreno" },
+									{ "gpu": "Adreno 200" },
+									{ "gpu": "Adreno (TM) 200" } ],
+			"settings": {
+				"shaderLod": "low",
+				"particleEffects": "low",
+				"clouds": false,
+				"trailShadows": false,
+				"windSnow": false,
+				"grappleSteam": false
+				"nightLightEffects": false,
+				"lightShafts": false,
+				"maxBackbufferPixels": 294000
+			}
+		}
+		
+		{	"match": [ { "device": "samsung Nexus 10" }	],
+			"settings": { "particleEffects": "low" }
+		}
+		{	"match": [ { "device": "Geniatech GameStick V1.0" }	],
+			"settings": { 
+				"antiAliasing": 2,
+				"shaderLod": "medium",
+				"particleEffects": "medium",
+				"clouds": false,
+				"windSnow": true,
+				"grappleSteam": false,
+				"nightLightEffects": true,
+				"lightShafts": true,
+				"frameRateSmoothing": true,
+			}
+		}
+	]
+}
+	
+		

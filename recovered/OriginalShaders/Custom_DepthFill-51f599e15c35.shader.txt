@@ -1,0 +1,56 @@
+Shader "Custom/DepthFill" {
+SubShader { 
+ Tags { "QUEUE"="Geometry+40" "RenderType"="Opaque" }
+ Pass {
+  Name "BASE"
+  Tags { "QUEUE"="Geometry+40" "RenderType"="Opaque" }
+  ColorMask 0
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+
+attribute vec4 _glesVertex;
+void main ()
+{
+  highp vec4 tmpvar_1;
+  highp vec4 tmpvar_2;
+  tmpvar_2.w = 1.0;
+  tmpvar_2.xyz = _glesVertex.xyz;
+  highp vec4 tmpvar_3;
+  tmpvar_3 = (gl_ModelViewProjectionMatrix * tmpvar_2);
+  tmpvar_1 = tmpvar_3;
+  tmpvar_1.z = (tmpvar_3.z - 0.0045);
+  gl_Position = tmpvar_1;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+void main ()
+{
+  gl_FragData[0] = vec4(1.0, 1.0, 1.0, 1.0);
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

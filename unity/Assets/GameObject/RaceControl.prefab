@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &147589
+GameObject:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 479954}
+  - 114: {fileID: 11409266}
+  - 114: {fileID: 11405782}
+  - 114: {fileID: 11461526}
+  - 114: {fileID: 11454010}
+  - 114: {fileID: 11419550}
+  - 114: {fileID: 11484216}
+  - 114: {fileID: 11443158}
+  - 114: {fileID: 11431434}
+  - 114: {fileID: 11470521}
+  - 114: {fileID: 11496012}
+  m_Layer: 0
+  m_Name: RaceControl
+  m_TagString: RaceControl
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &479954
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &11409266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897af2fedee1dbc8742a968fb3f7e962, type: 1}
+  m_Name:
+  m_touchInputManager: {fileID: 11405782}
+  DynamicCamera: {fileID: 147589, guid: 6b817d67b1b70434f84d32a1f7adeac0, type: 2}
+  m_endOfRace: {fileID: 11400000, guid: 2d191d72aff764841bdb9af0382b7c8b, type: 2}
+--- !u!114 &11405782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677d1f0f13fc729f0d683305f8fc93e9, type: 1}
+  m_Name:
+  m_widescreenTouchScale: 1.3333334
+  m_touchButtonSize: 0.25
+  m_visibleButtonSize: 0.125
+  m_maxTouchBorder: 0.5
+--- !u!114 &11461526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3f1a2d47bf9479853f992a9cd99dc9, type: 1}
+  m_Name:
+  m_loadScreenPrefab: {fileID: 147589, guid: f9bd72e12df0f9349bf02ff669e3e6ff, type: 2}
+  m_musicPlayerPrefab: {fileID: 147589, guid: c8a53b7be14b1d145b0194e99d71a2e7, type: 2}
+  m_saveManagerPrefab: {fileID: 147589, guid: 56dbeb3befa51b7488d1a81356db0c57, type: 2}
+  m_menuPlaylist: {fileID: 11400000, guid: 800b1dbea6ebd264ba5b1767b7ba1602, type: 2}
+  m_loadScreenFadeTime: 0.25
+  m_loadScreenToRaceFadeTime: 0.75
+  m_blankScreenFadeTime: 0.25
+  m_fadeInDelay: 0
+  m_fadeOutDelay: 0
+  m_loadBlankScreen: 0
+--- !u!114 &11454010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce9576c2d190340b0546abe1e09dbc2, type: 1}
+  m_Name:
+--- !u!114 &11419550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a637c7aa2c574e506e09f1c621bc686, type: 1}
+  m_Name:
+--- !u!114 &11484216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ea482b7d61211f0bfcb52d1aa59165, type: 1}
+  m_Name:
+  m_initialiseTwitter: 1
+  m_initialiseFacebook: 1
+--- !u!114 &11443158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873de0113e8a63f0127cca4323143be4, type: 1}
+  m_Name:
+--- !u!114 &11431434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b0760bb817e9adfa4200d42d4821ed, type: 1}
+  m_Name:
+--- !u!114 &11470521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c5336f6d8e48c2892aa5368512b0f0, type: 1}
+  m_Name:
+  m_reviewContext: EndOfRace
+--- !u!114 &11496012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d835a706f18ef306bf245a0e225baa8, type: 1}
+  m_Name:
+  m_minTimeBetweenPrompts: 1800
+  m_maxTimeBetweenPrompts: 3600
+  m_minEarnedBolts: 30
+  m_dialogDelayTime: 4
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 147589}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

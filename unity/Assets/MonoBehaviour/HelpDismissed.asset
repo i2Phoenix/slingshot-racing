@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: HelpDismissed
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: 49767a5e7f954204aba254719ce324e0, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: ac9a5e0a861d62646a161223be3e5bbb, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 6c82965677ed7ad4892a0670f4182b68, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: b7cc9190d1eb1bc4c9804376d3d001f9, type: 1}
+    m_volumeScale: 1
+  m_priority: 128
+  m_interuptEqualPriority: 0
+  m_pitch: 1
+  m_volumeScale: 1

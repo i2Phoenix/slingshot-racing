@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b9e2eaeaec0fefc7f2603e6e845e98bf
+PluginImporter:
+  serializedVersion: 2
+  isPreloaded: 0
+  isOverridable: 0
+  platformData:
+  - first:
+      Any:
+    second:
+      enabled: 0
+      settings: {}
+  - first:
+      Android: Android
+    second:
+      enabled: 1
+      settings:
+        CPU: ARM64

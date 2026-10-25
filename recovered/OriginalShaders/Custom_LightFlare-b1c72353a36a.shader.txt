@@ -1,0 +1,91 @@
+Shader "Custom/LightFlare" {
+Properties {
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+}
+SubShader { 
+ Tags { "QUEUE"="Geometry+90" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Geometry+90" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZWrite Off
+  Blend One One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec3 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+
+uniform highp vec4 g_cameraUp;
+uniform highp vec4 g_cameraPos;
+uniform highp vec4 g_cameraForward;
+uniform highp mat4 _World2Object;
+uniform highp mat4 _Object2World;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  lowp vec3 tmpvar_1;
+  highp vec4 worldPos;
+  highp vec4 tmpvar_2;
+  tmpvar_2.w = 1.0;
+  tmpvar_2.xyz = _glesVertex.xyz;
+  highp vec4 tmpvar_3;
+  tmpvar_3 = (_Object2World * tmpvar_2);
+  worldPos = tmpvar_3;
+  highp vec3 tmpvar_4;
+  tmpvar_4 = normalize ((g_cameraPos.xyz - tmpvar_3.xyz));
+  highp vec3 tmpvar_5;
+  tmpvar_5 = normalize (cross (-(tmpvar_4), normalize ((g_cameraForward.xyz - g_cameraUp.xyz))));
+  highp vec2 tmpvar_6;
+  tmpvar_6 = ((_glesMultiTexCoord0.xy - 0.5) * 2.0);
+  highp float tmpvar_7;
+  tmpvar_7 = (_glesColor.w * 32.0);
+  worldPos.xyz = (tmpvar_3.xyz + ((((cross (tmpvar_4, tmpvar_5) * tmpvar_6.x) + (tmpvar_5 * tmpvar_6.y)) * tmpvar_7) + (tmpvar_4 * (tmpvar_7 * 0.25))));
+  highp vec4 tmpvar_8;
+  tmpvar_8.w = 1.0;
+  tmpvar_8.xyz = (_World2Object * worldPos).xyz;
+  highp vec3 tmpvar_9;
+  tmpvar_9 = (_glesColor.xyz + _glesColor.xyz);
+  tmpvar_1 = tmpvar_9;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_8);
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+  xlv_TEXCOORD1 = tmpvar_1;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec3 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D _MainTex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  tmpvar_1.w = 1.0;
+  tmpvar_1.xyz = (texture2D (_MainTex, xlv_TEXCOORD0).xyz * xlv_TEXCOORD1);
+  gl_FragData[0] = tmpvar_1;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

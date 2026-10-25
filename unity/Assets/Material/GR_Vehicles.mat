@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: GR_Vehicles
+  m_Shader: {fileID: 4800000, guid: 2ff420b07f05b2742bbcc2543fb5678a, type: 1}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: a947ea0fb38a7cb41ad2ba50e20722e6, type: 1}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _GlossTex
+        second:
+          m_Texture: {fileID: 2800000, guid: cf352b3479ab2e84b9d59dab59592c73, type: 1}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Lightmap
+        second:
+          m_Texture: {fileID: 2800000, guid: 1883918ab32be444a9ce2ff7b84c88f3, type: 1}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _UOffset
+        second: 0
+      data:
+        first:
+          name: _SpecPower
+        second: 33.35936
+    m_Colors: {}

@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!43 &4300000
+Mesh:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Batch_GR_Arrows_Glow
+  m_SubMeshes:
+  - firstByte: 0
+    indexCount: 17
+    isTriStrip: 2
+    triangleCount: 10
+    firstVertex: 0
+    vertexCount: 9
+    localAABB:
+      m_Center: {x: 5.9281187, y: 0.07500002, z: 0.08335531}
+      m_Extent: {x: 1.0105093, y: 8.940697E-08, z: 0.74885535}
+  m_MeshCompression: 0
+  m_IndexBuffer: 00000100020003000400030005000600070006000800010000000100010006000300
+  m_Skin: []
+  m_BindPose: []
+  m_VertexData:
+    m_CurrentChannels: 9
+    m_VertexCount: 9
+    m_Streams[0]:
+      channelMask: 9
+      offset: 0
+      stride: 20
+      align: 16
+    m_Streams[1]:
+      channelMask: 0
+      offset: 0
+      stride: 0
+      align: 16
+    m_Streams[2]:
+      channelMask: 0
+      offset: 0
+      stride: 0
+      align: 16
+    m_Streams[3]:
+      channelMask: 0
+      offset: 0
+      stride: 0
+      align: 16
+    m_DataSize: 180
+    _typelessdata: 2fbab9409099993d365e2abf752e5e3faf0c7e3fd2b7bd409499993d5895d4be73bb593fb01e753f227fc1409099993d365e2abf0285553faf0c7e3f713bd340a399993d2689093f4ea9423f69c7513f3e09de40a499993d89fe1d3f3713373fa0d04e3f69e9da40a799993d0fc5533ff86c3a3fb977483f2613a840a399993d5bd1093fa5f1703ff2bc513ff285a040a899993dc20b553fd80a793f6448483f0f5d9d40a499993d54db1f3f4e6e7c3f8b8b4e3f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_BindPoses:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_Colors:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+  m_LocalAABB:
+    m_Center: {x: 5.9281187, y: 0.07500002, z: 0.08335531}
+    m_Extent: {x: 1.0105093, y: 8.940697E-08, z: 0.74885535}
+  m_MeshUsageFlags: 0
+  m_MeshOptimized: 1

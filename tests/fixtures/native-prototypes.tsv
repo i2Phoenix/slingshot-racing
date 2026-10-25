@@ -1,0 +1,42 @@
+float	fminf	float:__x	float:__y
+float	fmaxf	float:__x	float:__y
+float	acosf	float:__x
+float	cosf	float:__x
+float	sinf	float:__x
+void	TrackUtils_SplinePoint	Vector3*:o_ret	Vector3*:p0	Vector3*:m0	Vector3*:p1	Vector3*:m1	float*:unitT
+void	TrackUtils_SplineTangent	Vector3*:o_ret	Vector3*:p0	Vector3*:m0	Vector3*:p1	Vector3*:m1	float*:unitT
+void	TrackUtils_SplineTangentDT	Vector3*:o_ret	Vector3*:p0	Vector3*:m0	Vector3*:p1	Vector3*:m1	float*:unitT
+void	TrackUtils_SplineUp	Vector3*:o_ret	Vector3*:u0	Vector3*:u1	float*:unitT
+void	TrackUtils_SplineNormal	Vector3*:o_ret	Vector3*:p0	Vector3*:m0	Vector3*:u0	Vector3*:p1	Vector3*:m1	Vector3*:u1	float*:unitT
+void	TrackUtils_SplineNormal2	Vector3*:o_ret	Vector3*:tangent	Vector3*:up
+void	TrackUtils_SplineWidth	float*:o_ret	float*:w0	float*:w1	float*:unitT
+void	TrackUtils_SplineRoofHeight	float*:o_ret	float*:h0	float*:h1	float*:unitT
+void	TrackUtils_SplineDsDt	float*:o_ret	Vector3*:p0	Vector3*:m0	Vector3*:p1	Vector3*:m1	float*:unitT
+void	TrackUtils_SplineCurve	float*:o_ret	Vector3*:p0	Vector3*:m0	Vector3*:u0	Vector3*:p1	Vector3*:m1	Vector3*:u1	float*:unitT
+void	TrackUtils_PointAtT	Vector3*:ret	TrackNodeCache*:nodes	int:numNodes	float:t
+void	TrackUtils_TangentAtT	Vector3*:ret	TrackNodeCache*:nodes	int:numNodes	float:t
+void	TrackUtils_TangentDTAtT	Vector3*:ret	TrackNodeCache*:nodes	int:numNodes	float:t
+void	TrackUtils_UpAtT	Vector3*:ret	TrackNodeCache*:nodes	int:numNodes	float:t
+void	TrackUtils_NormalAtT	Vector3*:ret	TrackNodeCache*:nodes	int:numNodes	float:t
+void	TrackUtils_DsDtAtT	float*:ret	TrackNodeCache*:nodes	int:numNodes	float:t
+void	TrackUtils_CurveAtT	float*:ret	TrackNodeCache*:nodes	int:numNodes	float:t
+void	TrackUtils_InfoAtT	TrackNodeCache*:_nodes	int:_numNodes	float:_t	Vector3*:o_point	Vector3*:o_tangent	Vector3*:o_normal	float*:o_width
+float	TrackUtils_ClosestTToPoint	TrackNodeCache*:nodes	int:numNodes	Vector3*:point	float:tHint	float:tHintSpread	float:tLowerBound	float:tUpperBound
+float	TrackUtils_ReParamStoT	ReParamNode*:nodes	float:clampedS
+float	TrackUtils_ReParamTtoS	ReParamNode*:nodes	float:clampedT
+void	QuaternionMul	float*:v	Quaternion*:q
+void	ParticleSys_BuildVertices_Billboard	Vector3*:o_vertices	ParticleSysParticle*:particles	uint:numParticles	Vector3*:cameraRight	Vector3*:cameraUp
+void	ParticleSys_BuildVertices_Stretch	Vector3*:o_vertices	ParticleSysParticle*:particles	uint:numParticles	Vector3*:cameraForward	float*:velocityScale	float*:lengthScale
+void	ParticleSys_BuildColours	Color*:o_colours	ParticleSysParticle*:_particles	uint:_numParticles	Color*:_colourAnimation
+uint	ParticleSys_UpdateParticles	ParticleSysParticle*:_particles	uint:numParticles	float:timeStep	float:velScale	float:sizeScale	Vector3*:force
+void	BypassMesh_DrawRange	ushort*:indices	Vector3*:vertices	Vector3*:normals	Color*:colours	ColourRGBA32*:colours32	Vector2*:texCoords	uint:matAttributeMask	uint:meshFlags	uint:startIndex	uint:indexCount
+bool	Platform_IsSimdSupported
+void	Platform_DisableSimd	bool:disable
+void	Streamers_UpdateParticles	StreamerParticle*:o_particles	StreamerParticle*:particles	Streamer*:streamers	UpdateParticlesParams*:p
+void	Streamers_BuildVertices	Vector3*:o_vertices	Vector3*:o_normals	StreamerParticle*:particles	StreamerParticle*:particlesOld	BuildVerticesParams*:p
+void	RopeUpdate	Vector2*:particles	Vector2*:oldParticles	RopeUpdateParams*:_params
+void	RopeUpdateMesh2	Vector3*:vertices	Color32*:colours	Vector2*:positions	Vector2*:oldPositions	RopeUpdateMeshParams*:job
+void	CubicHermite1D	float*:ret	float:p0	float:m0	float:p1	float:m1	float:t
+void	CubicHermite	Vector3*:ret	Vector3*:p0	Vector3*:m0	Vector3*:p1	Vector3*:m1	float:t
+void	CubicHermiteDT	Vector3*:ret	Vector3*:p0	Vector3*:m0	Vector3*:p1	Vector3*:m1	float:t
+void	CubicHermiteDT2	Vector3*:ret	Vector3*:p0	Vector3*:m0	Vector3*:p1	Vector3*:m1	float:t

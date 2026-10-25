@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: PickupAudio
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: 23921c62c1eaad54b9dc8892fc12e4f8, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 9a2df88cf4b5bc840b3193edf9e6c5fe, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 924eedf4fc29ff54f9de7904600953f3, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: b4fa6a51678650d429604b7c1727444c, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 3be534ca0164f1f408cb46658e88b8e4, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: ba21cb48ad798a4488dabfe0e7f345d6, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: fc070262751032047a40ca47f0e5fc8a, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: a4bab70db432cef4da03f33f7c059036, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: fad9ad99e103afb44b1aea1d6e5fe20f, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: b1b431c343e16954fbd169d3eb7669ee, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 44557eaa7571c604a9020e93e72faa8a, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: edfc9b958787a3c44bf441ca7a06c79c, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 768ff06c520095b42af6749c97899a2c, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: c624b9c9a578ff647af8fdd420d97f4f, type: 1}
+    m_volumeScale: 1
+  m_priority: 128
+  m_interuptEqualPriority: 0
+  m_pitch: 1
+  m_volumeScale: 1

@@ -1,0 +1,77 @@
+Shader "Custom/BakedBlobShadow" {
+Properties {
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+}
+SubShader { 
+ Tags { "QUEUE"="Geometry+20" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Geometry+20" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZWrite Off
+  Blend One OneMinusSrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec4 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+
+uniform highp vec4 g_blobShadowGlow;
+uniform highp vec4 g_blobShadowAlpha;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  highp vec4 tmpvar_1;
+  lowp vec4 tmpvar_2;
+  highp vec4 tmpvar_3;
+  tmpvar_3.w = 1.0;
+  tmpvar_3.xyz = _glesVertex.xyz;
+  highp vec4 tmpvar_4;
+  tmpvar_4 = (gl_ModelViewProjectionMatrix * tmpvar_3);
+  tmpvar_1 = tmpvar_4;
+  tmpvar_1.z = (tmpvar_4.z - 0.04);
+  highp vec3 tmpvar_5;
+  tmpvar_5 = (dot (_glesColor, g_blobShadowGlow) * vec3(1.0, 0.9, 0.8));
+  tmpvar_2.xyz = tmpvar_5;
+  highp float tmpvar_6;
+  tmpvar_6 = dot (_glesColor, g_blobShadowAlpha);
+  tmpvar_2.w = tmpvar_6;
+  gl_Position = tmpvar_1;
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+  xlv_TEXCOORD1 = tmpvar_2;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec4 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D _MainTex;
+void main ()
+{
+  gl_FragData[0] = (xlv_TEXCOORD1 * texture2D (_MainTex, xlv_TEXCOORD0).w);
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

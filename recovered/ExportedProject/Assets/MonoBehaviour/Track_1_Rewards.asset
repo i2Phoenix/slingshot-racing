@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ab02b0caad1f277a6ecfeb77052681, type: 1}
+  m_Name: Track_1_Rewards
+  m_scenes:
+  - Track_1_Blockout
+  - Track_1_MiniRewards
+  m_reverseTrack: 0
+  m_debug: 0
+  m_noReverse: 0
+  m_noVariants: 0

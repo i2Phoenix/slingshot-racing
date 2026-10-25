@@ -1,0 +1,95 @@
+Shader "Custom/StaticLightmappedSparkle" {
+Properties {
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+ _SparkleMap ("SparkleMap (RGB)", 2D) = "white" {}
+}
+SubShader { 
+ LOD 250
+ Pass {
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec3 xlv_TEXCOORD3;
+varying mediump vec2 xlv_TEXCOORD2;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform highp vec4 unity_LightmapST;
+
+uniform highp vec4 g_sparkleData;
+uniform highp vec3 _WorldSpaceCameraPos;
+attribute vec4 _glesMultiTexCoord1;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesVertex;
+void main ()
+{
+  mediump vec2 tmpvar_1;
+  mediump vec2 tmpvar_2;
+  lowp vec3 tmpvar_3;
+  highp vec4 tmpvar_4;
+  tmpvar_4.w = 1.0;
+  tmpvar_4.xyz = _glesVertex.xyz;
+  highp vec2 tmpvar_5;
+  tmpvar_5 = (_glesMultiTexCoord0.xy * g_sparkleData.x);
+  tmpvar_1 = tmpvar_5;
+  highp vec2 tmpvar_6;
+  tmpvar_6 = ((_glesMultiTexCoord1.xy * unity_LightmapST.xy) + unity_LightmapST.zw);
+  tmpvar_2 = tmpvar_6;
+  highp vec3 tmpvar_7;
+  tmpvar_7 = abs (normalize ((_WorldSpaceCameraPos - _glesVertex.xyz)));
+  highp vec3 tmpvar_8;
+  tmpvar_8 = max (((2.25 * abs ((fract (((tmpvar_7.xzx * vec3(4.0, 3.5, 5.0)) + (tmpvar_7.yyz * vec3(1.0, 1.5, 5.0)))) - 0.5))) - 0.125), vec3(0.0, 0.0, 0.0));
+  tmpvar_3 = tmpvar_8;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_4);
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+  xlv_TEXCOORD1 = tmpvar_1;
+  xlv_TEXCOORD2 = tmpvar_2;
+  xlv_TEXCOORD3 = tmpvar_3;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec3 xlv_TEXCOORD3;
+varying mediump vec2 xlv_TEXCOORD2;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D unity_Lightmap;
+uniform sampler2D _SparkleMap;
+uniform sampler2D _MainTex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  tmpvar_1.w = 1.0;
+  tmpvar_1.xyz = ((texture2D (_MainTex, xlv_TEXCOORD0).xyz + dot (texture2D (_SparkleMap, xlv_TEXCOORD1).xyz, (xlv_TEXCOORD3 * xlv_TEXCOORD3))) * (texture2D (unity_Lightmap, xlv_TEXCOORD2).xyz * 1.17647));
+  gl_FragData[0] = tmpvar_1;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+SubShader { 
+ UsePass "Custom/StaticLightmapped/GLSL"
+}
+SubShader { 
+ UsePass "Custom/StaticLightmapped/CG"
+}
+}

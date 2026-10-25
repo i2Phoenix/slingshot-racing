@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: WallCrash2
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: c1200861ba88172489d7b082c8bb9e3f, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 3b1d62f345333124ca0455ff669aac2d, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: c91de4dc93b61eb4a98bcfef9581e389, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: aa83405d4f98eee47b4db9c95d486a80, type: 1}
+    m_volumeScale: 1
+  m_priority: 128
+  m_interuptEqualPriority: 0
+  m_pitch: 1
+  m_volumeScale: 0.25

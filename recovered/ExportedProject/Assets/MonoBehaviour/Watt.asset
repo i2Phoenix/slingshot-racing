@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ddec51e2ee3c031fc732a12fab19242, type: 1}
+  m_Name: Watt
+  m_clips:
+  - {fileID: 8300000, guid: ac45b5b288a03c54d82a8c49d46655c7, type: 1}
+  m_fanfare: {fileID: 8300000, guid: d5d4052e27cee3747800c5b33627f0b5, type: 1}
+  m_loopLastClip: 1

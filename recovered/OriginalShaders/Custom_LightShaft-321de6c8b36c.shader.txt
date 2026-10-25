@@ -1,0 +1,59 @@
+Shader "Custom/LightShaft" {
+SubShader { 
+ Tags { "QUEUE"="Geometry+100" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Geometry+100" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZWrite Off
+  Blend One One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec4 xlv_TEXCOORD;
+
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  highp vec4 tmpvar_2;
+  tmpvar_2.w = 1.0;
+  tmpvar_2.xyz = _glesVertex.xyz;
+  highp vec4 tmpvar_3;
+  tmpvar_3 = (_glesColor + _glesColor);
+  tmpvar_1 = tmpvar_3;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_2);
+  xlv_TEXCOORD = tmpvar_1;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec4 xlv_TEXCOORD;
+void main ()
+{
+  gl_FragData[0] = xlv_TEXCOORD;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

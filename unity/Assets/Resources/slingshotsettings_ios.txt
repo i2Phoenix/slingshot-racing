@@ -1,0 +1,66 @@
+{ "version": 1, "platformSettings": [
+		
+		{ "match": [	{ "iPhoneGeneration": "iPhone3GS" },
+									{ "iPhoneGeneration": "iPodTouch3Gen" } ],
+			"settings": {
+				"antiAliasing":				2,
+				"frameRate":					30,
+				"shaderLod":					"medium",
+				"particleEffects":		"low",
+				"trailShadows":				false,
+				"windSnow":						false,
+				"nightLightEffects":	false,
+				"grappleSteam":				false
+			}
+		},
+		
+		{ "match": [	{ "iPhoneGeneration": "iPhone4" },
+									{ "iPhoneGeneration": "iPodTouch4Gen" } ],
+			"settings": {
+				"frameRate":					30,
+				"shaderLod":					"medium",
+				"particleEffects":		"low",
+				"clouds":							false,
+				"trailShadows":				false,
+				"windSnow":						false,
+				"nightLightEffects":	false,
+				"grappleSteam":				false
+			}
+		},
+		
+		{ "match": [	{ "iPhoneGeneration": "iPhone4S" },
+									{ "iPhoneGeneration": "iPodTouch5Gen" } ],
+			"settings": {
+				"frameRate":					30,
+				"shaderLod":					"medium",
+			}
+		},
+		
+		{ "match": [	{ "iPhoneGeneration": "iPhone5" } ],
+			"settings": {
+				"shaderLod":					"medium",
+			}
+		},
+		
+		{ "match": [	{ "iPhoneGeneration": "iPad1Gen" } ],
+			"settings": {
+				"shaderLod":					"medium",
+				"particleEffects":		"low",
+				"clouds":							false,
+				"trailShadows":				false,
+				"windSnow":						false,
+				"nightLightEffects":	false,
+			}
+		},
+		
+		{ "match": [	{ "iPhoneGeneration": "iPad2Gen" },
+									{ "iPhoneGeneration": "iPad3Gen" } ],
+			"settings": {
+				"antiAliasing": 2
+			}
+		},
+		
+	]
+}
+	
+		

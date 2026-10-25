@@ -1,0 +1,68 @@
+Shader "Custom/FrontEndUnlit" {
+Properties {
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+}
+SubShader { 
+ Tags { "LIGHTMODE"="ForwardBase" "RenderType"="Opaque" }
+ Pass {
+  Tags { "LIGHTMODE"="ForwardBase" "RenderType"="Opaque" }
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying mediump vec2 xlv_TEXCOORD;
+varying lowp vec3 xlv_COLOR;
+
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  mediump vec2 tmpvar_1;
+  highp vec4 tmpvar_2;
+  tmpvar_2.w = 1.0;
+  tmpvar_2.xyz = _glesVertex.xyz;
+  highp vec2 tmpvar_3;
+  tmpvar_3 = _glesMultiTexCoord0.xy;
+  tmpvar_1 = tmpvar_3;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_2);
+  xlv_COLOR = _glesColor.xyz;
+  xlv_TEXCOORD = tmpvar_1;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying mediump vec2 xlv_TEXCOORD;
+varying lowp vec3 xlv_COLOR;
+uniform sampler2D _MainTex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  tmpvar_1.w = 1.0;
+  tmpvar_1.xyz = (texture2D (_MainTex, xlv_TEXCOORD).xyz * xlv_COLOR);
+  gl_FragData[0] = tmpvar_1;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

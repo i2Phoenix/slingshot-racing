@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70d3a7bb9137bb9c76d408ec50f6923, type: 1}
+  m_Name: Track_MJS_4.1
+  m_splineData:
+  - m_name: TrackSpline
+    m_normalisedSpeeds:
+    - 0.93777794
+    - 1.0940741
+    - 1.1993347
+    - 1.1151752
+    - 1.0926596
+    - 1.1032679
+    - 1.0726216
+    - 0.99782383
+    - 0.878741
+    - 0.7926456
+    - 0.78148156
+    - 0.7561088
+    - 0.7043239
+    - 0.77177644
+    - 0.86564106
+    - 0.8347254
+    - 0.798149
+    - 0.82250684
+    - 0.8116509
+    - 0.85427713
+    - 1.0430386
+    - 1.3556309
+    - 1.4848144
+    - 1.4247005
+    - 1.3329614
+    - 1.2814353
+    - 1.3731744
+    - 1.4436839
+    - 1.2919846
+    - 1.2214751
+    - 1.3396823
+    m_segmentLength: 9.757016

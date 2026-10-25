@@ -1,0 +1,78 @@
+Shader "Custom/RaceIndicator" {
+Properties {
+ _MainTex ("Font Texture", 2D) = "white" {}
+ _DropOffset ("Drop offset", Vector) = (-0.0117188,0.0117188,0,0)
+}
+SubShader { 
+ Tags { "QUEUE"="Transparent+40" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Transparent+40" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZTest Always
+  ZWrite Off
+  Cull Off
+  Blend One SrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+varying lowp vec4 xlv_COLOR0;
+
+uniform mediump vec2 _DropOffset;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  highp vec4 tmpvar_2;
+  tmpvar_2.w = 1.0;
+  tmpvar_2.xyz = _glesVertex.xyz;
+  tmpvar_1.xyz = (_glesColor * _glesColor.w).xyz;
+  tmpvar_1.w = _glesColor.w;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_2);
+  xlv_COLOR0 = tmpvar_1;
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+  xlv_TEXCOORD1 = (_glesMultiTexCoord0.xy + _DropOffset);
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+varying lowp vec4 xlv_COLOR0;
+uniform sampler2D _MainTex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  tmpvar_1 = texture2D (_MainTex, xlv_TEXCOORD0);
+  lowp vec4 tmpvar_2;
+  tmpvar_2.xyz = (xlv_COLOR0.xyz * tmpvar_1.x);
+  tmpvar_2.w = ((1.0 - (xlv_COLOR0.w * tmpvar_1.x)) * (1.0 - (xlv_COLOR0.w * texture2D (_MainTex, xlv_TEXCOORD1).x)));
+  gl_FragData[0] = tmpvar_2;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

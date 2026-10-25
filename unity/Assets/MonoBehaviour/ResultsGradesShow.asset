@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: ResultsGradesShow
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: a0ea58f873e56204ba37c75b0ec5e6cb, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 9e88268e7bb0f634c99a0f8b69467eb8, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 6848780768e065c4ba5b3e09f2f3cace, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 0e5033673efa90b46b592714519d16a2, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: b72b0aba31549bf4593b94abf23739ce, type: 1}
+    m_volumeScale: 0
+  - m_clip: {fileID: 8300000, guid: 1e1c1e0cf886ce142991f87784540505, type: 1}
+    m_volumeScale: 0
+  m_priority: 5
+  m_interuptEqualPriority: 0
+  m_pitch: 1
+  m_volumeScale: 1

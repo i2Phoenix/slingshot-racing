@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd6f1e90e061a568bfe72b0a67e7040, type: 1}
+  m_Name: FreePlay
+  m_pointsToUnlock: 0
+  m_major: 0
+  m_minor: 0
+  m_type: 0
+  m_races:
+  - {fileID: 11400000, guid: b4e257a898e0abe498da99713a8d6110, type: 2}
+  - {fileID: 11400000, guid: d786ea2cfa9139643b91234e4b49b9c5, type: 2}
+  - {fileID: 11400000, guid: 2394d5c31fb734a40b0dca55ffeb8f57, type: 2}
+  - {fileID: 11400000, guid: 0e6f9a76c4ebf9646b94fd79cd03dca9, type: 2}
+  - {fileID: 11400000, guid: ac6be142ab3384b4791eff877f411c47, type: 2}
+  - {fileID: 11400000, guid: cc71476883db5664fbd240aefd858418, type: 2}
+  - {fileID: 11400000, guid: 77b4f321f3467634ea1786b988c8e5b8, type: 2}
+  - {fileID: 11400000, guid: 472eb4a2ee4e19944b2e154562686405, type: 2}
+  - {fileID: 11400000, guid: 4263ecd2203bc6b48b9e253974e3fce1, type: 2}
+  - {fileID: 11400000, guid: be7826c2d062b0a40adb0ec1eca18275, type: 2}
+  m_allCompleteAchievement: {fileID: 0}
+  m_allMasteredAchievement: {fileID: 0}

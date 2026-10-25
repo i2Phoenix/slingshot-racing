@@ -1,0 +1,75 @@
+Shader "PipeGUI/Steam" {
+Properties {
+ _MainTex ("Base Texture", 2D) = "white" {}
+ _MainTex2_ST ("Second Texture Tiling/Offset", Vector) = (1,1,0,0)
+ _GradientTex ("Gradient Texture", 2D) = "white" {}
+}
+SubShader { 
+ Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZTest Always
+  ZWrite Off
+  Blend One OneMinusSrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying mediump vec2 xlv_TEXCOORD2;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+
+uniform mediump vec4 _MainTex_ST;
+uniform mediump vec4 _MainTex2_ST;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesVertex;
+void main ()
+{
+  highp vec4 tmpvar_1;
+  tmpvar_1.w = 1.0;
+  tmpvar_1.xyz = _glesVertex.xyz;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_1);
+  xlv_TEXCOORD0 = ((_glesMultiTexCoord0.xy * _MainTex_ST.xy) + _MainTex_ST.zw);
+  xlv_TEXCOORD1 = ((_glesMultiTexCoord0.xy * _MainTex2_ST.xy) + _MainTex2_ST.zw);
+  xlv_TEXCOORD2 = _glesMultiTexCoord0.xy;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying mediump vec2 xlv_TEXCOORD2;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D _MainTex;
+uniform sampler2D _GradientTex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  tmpvar_1 = texture2D (_MainTex, xlv_TEXCOORD0);
+  lowp vec4 tmpvar_2;
+  tmpvar_2 = texture2D (_MainTex, xlv_TEXCOORD1);
+  gl_FragData[0] = vec4((((tmpvar_1.w + tmpvar_2.w) - (tmpvar_1.w * tmpvar_2.w)) * texture2D (_GradientTex, xlv_TEXCOORD2).w));
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

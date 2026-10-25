@@ -1,0 +1,102 @@
+Shader "Custom/PipeGUI_Streamer" {
+Properties {
+ _MainTex ("Base (RGB) Gloss (A)", 2D) = "white" {}
+ _SpecColor ("Specular Colour", Color) = (1,1,1,1)
+ _SpecPower ("Specular Power", Range(0,128)) = 10
+}
+SubShader { 
+ Tags { "RenderType"="Opaque" }
+ Pass {
+  Tags { "RenderType"="Opaque" }
+  Cull Off
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec3 xlv_TEXCOORD2;
+varying lowp vec3 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+
+uniform highp vec3 _WorldSpaceCameraPos;
+uniform highp float _SpecPower;
+uniform highp vec4 _SpecColor;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec3 _glesNormal;
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  vec3 tmpvar_1;
+  tmpvar_1 = normalize (_glesNormal);
+  lowp vec3 tmpvar_2;
+  lowp vec3 tmpvar_3;
+  highp vec4 worldPos;
+  highp vec4 tmpvar_4;
+  tmpvar_4.w = 1.0;
+  tmpvar_4.xyz = _glesVertex.xyz;
+  worldPos = tmpvar_4;
+  worldPos.z = (_glesVertex.z * 0.02);
+  highp vec4 tmpvar_5;
+  tmpvar_5 = (gl_ModelViewProjectionMatrix * worldPos);
+  highp float tmpvar_6;
+  tmpvar_6 = dot (vec3(-0.577367, 0.577367, -0.577367), tmpvar_1);
+  highp vec3 tmpvar_7;
+  tmpvar_7 = (_glesColor * (abs (tmpvar_6) + 0.4)).xyz;
+  tmpvar_2 = tmpvar_7;
+  highp float tmpvar_8;
+  tmpvar_8 = dot (normalize ((vec3(-0.577367, 0.577367, -0.577367) + normalize ((_WorldSpaceCameraPos - worldPos.xyz)))), tmpvar_1);
+  highp float tmpvar_9;
+  if ((tmpvar_6 > 0.0)) {
+    tmpvar_9 = tmpvar_8;
+  } else {
+    tmpvar_9 = -(tmpvar_8);
+  };
+  highp vec3 tmpvar_10;
+  tmpvar_10 = (pow (max (0.0, tmpvar_9), _SpecPower) * (4.0 * _SpecColor.xyz));
+  tmpvar_3 = tmpvar_10;
+  gl_Position = tmpvar_5;
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+  xlv_TEXCOORD1 = tmpvar_2;
+  xlv_TEXCOORD2 = tmpvar_3;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec3 xlv_TEXCOORD2;
+varying lowp vec3 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D _MainTex;
+void main ()
+{
+  lowp vec4 c;
+  lowp vec4 tmpvar_1;
+  tmpvar_1 = texture2D (_MainTex, xlv_TEXCOORD0);
+  c = tmpvar_1;
+  c.xyz = ((tmpvar_1.xyz + (tmpvar_1.w * xlv_TEXCOORD2)) * xlv_TEXCOORD1);
+  c.w = 1.0;
+  gl_FragData[0] = c;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

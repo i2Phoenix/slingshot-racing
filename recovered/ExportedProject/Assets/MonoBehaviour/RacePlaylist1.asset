@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82b79c316977bbd3de99185a5d3adf5, type: 1}
+  m_Name: RacePlaylist1
+  m_tracks:
+  - {fileID: 11400000, guid: 63592946dedbff846a8028fea5ee82fd, type: 2}
+  - {fileID: 11400000, guid: f7d56f1864a3f454391f1a1ace7fa5a2, type: 2}
+  - {fileID: 11400000, guid: 959fd49a4e81e1e42904ea9b9db1b96b, type: 2}
+  - {fileID: 11400000, guid: 79d63d7d0885a564d84e4c0adf4b078a, type: 2}
+  - {fileID: 11400000, guid: 5321239145100694281add417a77bcfc, type: 2}
+  m_silenceBetweenTracks: 1

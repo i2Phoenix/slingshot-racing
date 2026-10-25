@@ -1,0 +1,66 @@
+Shader "Misc/LoadingScreen" {
+Properties {
+ _Color ("Main Color", Color) = (1,1,1,1)
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+}
+SubShader { 
+ Tags { "QUEUE"="Geometry+40" "RenderType"="Opaque" }
+ Pass {
+  Tags { "QUEUE"="Geometry+40" "RenderType"="Opaque" }
+  ZTest Always
+  ZWrite Off
+  Cull Off
+  Fog {
+   Color (0,0,0,0)
+  }
+  Blend SrcAlpha OneMinusSrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying mediump vec2 xlv_TEXCOORD0;
+
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesVertex;
+void main ()
+{
+  highp vec4 tmpvar_1;
+  tmpvar_1.w = 1.0;
+  tmpvar_1.xyz = _glesVertex.xyz;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_1);
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D _MainTex;
+uniform lowp vec4 _Color;
+void main ()
+{
+  gl_FragData[0] = (texture2D (_MainTex, xlv_TEXCOORD0) * _Color);
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

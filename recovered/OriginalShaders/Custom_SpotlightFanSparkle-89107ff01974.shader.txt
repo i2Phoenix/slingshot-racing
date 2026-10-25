@@ -1,0 +1,170 @@
+Shader "Custom/SpotlightFanSparkle" {
+Properties {
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+ _SparkleMap ("SparkleMap (RGB)", 2D) = "white" {}
+}
+SubShader { 
+ LOD 250
+ Tags { "QUEUE"="Geometry+90" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Geometry+90" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZWrite Off
+  Blend One One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec3 xlv_TEXCOORD3;
+varying lowp vec3 xlv_TEXCOORD2;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform highp vec4 unity_Scale;
+
+uniform highp vec4 g_windSnowData;
+uniform highp vec4 g_spotlightSparkleData;
+uniform highp vec4 g_cameraPos;
+uniform highp mat4 _World2Object;
+uniform highp mat4 _Object2World;
+attribute vec4 _glesTANGENT;
+attribute vec4 _glesMultiTexCoord1;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  vec4 tmpvar_1;
+  tmpvar_1.xyz = normalize (_glesTANGENT.xyz);
+  tmpvar_1.w = _glesTANGENT.w;
+  highp vec3 ramps;
+  mediump vec2 tmpvar_2;
+  lowp vec3 tmpvar_3;
+  lowp vec3 tmpvar_4;
+  highp float dist;
+  mediump vec3 worldTangent;
+  mediump vec3 worldNormal;
+  highp float normalY;
+  highp vec4 worldPos;
+  highp vec4 tmpvar_5;
+  tmpvar_5.w = 1.0;
+  tmpvar_5.xyz = _glesVertex.xyz;
+  highp vec4 tmpvar_6;
+  tmpvar_6 = (_Object2World * tmpvar_5);
+  worldPos = tmpvar_6;
+  mediump float tmpvar_7;
+  if ((_glesMultiTexCoord1.x < 0.0)) {
+    tmpvar_7 = 0.0;
+  } else {
+    tmpvar_7 = _glesMultiTexCoord1.x;
+  };
+  normalY = tmpvar_7;
+  mediump float tmpvar_8;
+  tmpvar_8 = sqrt ((1.0 - (_glesMultiTexCoord1.y * _glesMultiTexCoord1.y)));
+  highp vec3 tmpvar_9;
+  tmpvar_9.x = tmpvar_8;
+  tmpvar_9.y = normalY;
+  tmpvar_9.z = _glesMultiTexCoord1.y;
+  worldNormal = tmpvar_9;
+  mat3 tmpvar_10;
+  tmpvar_10[0] = _Object2World[0].xyz;
+  tmpvar_10[1] = _Object2World[1].xyz;
+  tmpvar_10[2] = _Object2World[2].xyz;
+  highp vec3 tmpvar_11;
+  tmpvar_11 = (tmpvar_10 * (tmpvar_1 * unity_Scale.w).xyz);
+  worldTangent = tmpvar_11;
+  highp vec3 tmpvar_12;
+  tmpvar_12 = normalize ((g_cameraPos.xyz - tmpvar_6.xyz));
+  highp vec3 tmpvar_13;
+  if ((_glesMultiTexCoord1.x < 0.0)) {
+    tmpvar_13 = vec3(0.0, 1.0, 0.0);
+  } else {
+    tmpvar_13 = tmpvar_12;
+  };
+  highp vec3 tmpvar_14;
+  tmpvar_14 = normalize (cross (tmpvar_13, worldTangent));
+  highp float tmpvar_15;
+  tmpvar_15 = dot (worldTangent, tmpvar_12);
+  lowp float tmpvar_16;
+  tmpvar_16 = (_glesColor.w * 32.0);
+  dist = tmpvar_16;
+  highp vec3 tmpvar_17;
+  tmpvar_17 = ((((worldNormal.x * worldTangent) + (worldNormal.y * (cross (worldTangent, tmpvar_14) * clamp (-(tmpvar_15), 0.0, 1.0)))) + (worldNormal.z * tmpvar_14)) * dist);
+  worldPos.xyz = (tmpvar_6.xyz + tmpvar_17);
+  worldPos.xyz = (worldPos.xyz + (tmpvar_12 * 0.2));
+  highp vec4 tmpvar_18;
+  tmpvar_18.w = 1.0;
+  tmpvar_18.xyz = (_World2Object * worldPos).xyz;
+  highp vec3 tmpvar_19;
+  tmpvar_19 = ((_glesColor * (1.0 - pow (abs (tmpvar_15), 4.0))) * 2.0).xyz;
+  tmpvar_4 = tmpvar_19;
+  highp vec2 tmpvar_20;
+  tmpvar_20.x = dot (tmpvar_17, tmpvar_14);
+  tmpvar_20.y = dot (tmpvar_17, worldTangent);
+  highp vec2 tmpvar_21;
+  tmpvar_21.x = g_spotlightSparkleData.x;
+  tmpvar_21.y = -(g_spotlightSparkleData.x);
+  highp vec2 tmpvar_22;
+  tmpvar_22 = ((tmpvar_20 * 0.1) + tmpvar_21);
+  tmpvar_2 = tmpvar_22;
+  highp float tmpvar_23;
+  tmpvar_23 = (fract ((g_windSnowData.y * 4.0)) * 3.0);
+  highp vec3 tmpvar_24;
+  tmpvar_24 = clamp ((vec3(tmpvar_23) - vec3(0.0, 1.0, 2.0)), 0.0, 1.0);
+  highp vec3 tmpvar_25;
+  tmpvar_25 = clamp (((3.0 - vec3(tmpvar_23)) - vec3(1.0, 0.0, 2.0)), 0.0, 1.0);
+  ramps.xy = min (tmpvar_24.xy, tmpvar_25.xy);
+  ramps.z = max (tmpvar_24.z, tmpvar_25.z);
+  highp vec3 tmpvar_26;
+  tmpvar_26 = (ramps * 2.0);
+  tmpvar_3 = tmpvar_26;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_18);
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+  xlv_TEXCOORD1 = tmpvar_2;
+  xlv_TEXCOORD2 = tmpvar_3;
+  xlv_TEXCOORD3 = tmpvar_4;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec3 xlv_TEXCOORD3;
+varying lowp vec3 xlv_TEXCOORD2;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D _SparkleMap;
+uniform sampler2D _MainTex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  tmpvar_1 = texture2D (_MainTex, xlv_TEXCOORD0);
+  lowp vec4 tmpvar_2;
+  tmpvar_2.w = 1.0;
+  tmpvar_2.xyz = ((tmpvar_1.xyz + (dot (texture2D (_SparkleMap, xlv_TEXCOORD1).xyz, xlv_TEXCOORD2) * tmpvar_1.xyz)) * xlv_TEXCOORD3);
+  gl_FragData[0] = tmpvar_2;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+SubShader { 
+ Tags { "QUEUE"="Geometry+90" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ UsePass "Custom/SpotlightFan/CG"
+}
+}

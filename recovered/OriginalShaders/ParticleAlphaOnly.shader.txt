@@ -1,0 +1,67 @@
+Shader "Custom/ParticleAlphaOnly" {
+Properties {
+ _MainTex ("Particle Texture", 2D) = "white" {}
+}
+SubShader { 
+ Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZWrite Off
+  Cull Off
+  Blend SrcAlpha OneMinusSrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec4 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  highp vec4 tmpvar_1;
+  tmpvar_1.w = 1.0;
+  tmpvar_1.xyz = _glesVertex.xyz;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_1);
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+  xlv_TEXCOORD1 = _glesColor;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec4 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D _MainTex;
+void main ()
+{
+  lowp vec4 xlat_var_output;
+  xlat_var_output.xyz = xlv_TEXCOORD1.xyz;
+  xlat_var_output.w = (xlv_TEXCOORD1.w * texture2D (_MainTex, xlv_TEXCOORD0).x);
+  gl_FragData[0] = xlat_var_output;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

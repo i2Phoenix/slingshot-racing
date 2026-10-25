@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61af80b14ef78461ecc505e10fc5b343, type: 1}
+  m_Name: SP_MJS4_RevDef_Pickups_Hard
+  m_layout: {fileID: 11400000, guid: 5fe829517b74fec4d870947457a9f9f6, type: 2}
+  m_extraScenes:
+  - Track_MJS_4.1_Pickups_Rev_2
+  m_raceControlPrefabs: []
+  m_numLaps: 0
+  m_numRacers: 1
+  m_aiDifficulty: 0
+  m_aiSchedule: {fileID: 0}
+  m_allAIsTheSame: 0
+  m_noAIMistakes: 0
+  m_times:
+  - 51
+  - 43
+  - 28
+  m_maxDuration: 60
+  m_overtakesRequired: 0
+  m_objective: 1
+  m_bonusObjectives: []
+  m_vehicleType: 0
+  m_hasTrackHint: 0
+  m_disableQuickStart: 0
+  m_forceReverseTrack: 0
+  m_enableEasyRewards: 0
+  m_hintStringID: ID_TrackHint_MJS4_RevDef_Pickups_Hard
+  m_hasGamepadHint: 0
+  m_leaderboard: {fileID: 0}
+  m_variant: 0

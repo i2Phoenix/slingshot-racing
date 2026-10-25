@@ -1,0 +1,15 @@
+Vector2	float:x	float:y
+Vector3	float:x	float:y	float:z
+Color	float:r	float:g	float:b	float:a
+Quaternion	float:x	float:y	float:z	float:w
+Color32	byte:r	byte:g	byte:b	byte:a
+ColourRGBA32	byte:r	byte:g	byte:b	byte:a
+TrackNodeCache	Vector3:m_position	Vector3:m_tangent	Vector3:m_up	float:m_width
+ReParamNode	float:s	float:t	float:dsdt	float:dtds
+RopeUpdateParams	uint:m_numParticles	float:m_restLength	float:m_straighten	float:m_radius1	Vector2:m_pos0	Vector2:m_pos1
+RopeUpdateMeshParams	uint:m_numParticles	float:m_frameLerp	float:m_y0	float:m_y1	float:m_lengthProp	Vector2:m_renderPos0	Color:m_colour
+ParticleSysParticle	Vector3:m_pos	Vector3:m_vel	float:m_energy	float:m_rotation	float:m_angularVelocity	Color:m_colour	float:m_startEnergyRecip	float:m_halfSize	float:m_rightX	float:m_rightY
+UpdateParticlesParams	uint:m_numStreamers	uint:m_numParticlesPerStreamer	Vector3:m_accel	Vector3:m_tailAccel	Vector3:m_wind	float:m_timeStep	float:m_normalLerp	float:m_segmentDistance	float:m_segmentDistanceTest	float:m_constraintScale
+Streamer	Color:m_colour	float:m_spinRate
+StreamerParticle	Vector3:m_pos	Vector3:m_normal	Vector3:m_tangent	Vector3:m_vel
+BuildVerticesParams	uint:m_numParticles	float:m_renderLerp	float:m_halfWidth	float:m_normalBlend

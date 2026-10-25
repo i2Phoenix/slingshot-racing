@@ -1,0 +1,84 @@
+Shader "Custom/PipeGUI_MeshParticle" {
+Properties {
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+ _GlossTex ("Gloss (RGB)", 2D) = "white" {}
+ _SpecPower ("Specular Power", Range(0,128)) = 10
+}
+SubShader { 
+ Tags { "RenderType"="Opaque" }
+ Pass {
+  Tags { "RenderType"="Opaque" }
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec4 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+
+uniform highp vec3 _WorldSpaceCameraPos;
+uniform highp float _SpecPower;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec3 _glesNormal;
+attribute vec4 _glesVertex;
+void main ()
+{
+  vec4 tmpvar_1;
+  tmpvar_1.w = 0.0;
+  tmpvar_1.xyz = normalize (_glesNormal);
+  highp vec4 tmpvar_2;
+  tmpvar_2 = _glesVertex;
+  lowp vec4 tmpvar_3;
+  tmpvar_2.z = (-3.8 + (_glesVertex.z * 0.05));
+  highp vec4 tmpvar_4;
+  tmpvar_4.w = 1.0;
+  tmpvar_4.xyz = tmpvar_2.xyz;
+  highp vec3 tmpvar_5;
+  tmpvar_5 = tmpvar_1.xyz;
+  highp vec3 tmpvar_6;
+  tmpvar_6 = vec3((max (0.0, dot (vec3(-0.577367, 0.577367, -0.577367), tmpvar_5)) + 0.4));
+  tmpvar_3.xyz = tmpvar_6;
+  highp float tmpvar_7;
+  tmpvar_7 = pow (dot (normalize ((vec3(-0.577367, 0.577367, -0.577367) + normalize ((_WorldSpaceCameraPos - tmpvar_2.xyz)))), tmpvar_5), _SpecPower);
+  tmpvar_3.w = tmpvar_7;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_4);
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+  xlv_TEXCOORD1 = tmpvar_3;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec4 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D _MainTex;
+uniform sampler2D _GlossTex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  tmpvar_1.w = 1.0;
+  tmpvar_1.xyz = ((texture2D (_MainTex, xlv_TEXCOORD0).xyz + (texture2D (_GlossTex, xlv_TEXCOORD0).xyz * xlv_TEXCOORD1.w)) * xlv_TEXCOORD1.xyz);
+  gl_FragData[0] = tmpvar_1;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

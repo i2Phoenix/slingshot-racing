@@ -1,0 +1,55 @@
+# Local tools, environments, original packages, and generated output.
+/.tools/
+/.venv/
+/work/
+/builds/
+/*.apk
+/*.apk.zip
+/recovered/AuxiliaryFiles/
+
+# Unity: retain Assets (including .meta files), Packages, and ProjectSettings.
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Ll]ogs/
+**/[Oo]bj/
+**/[Uu]ser[Ss]ettings/
+**/MemoryCaptures/
+**/Recordings/
+**/.vs/
+**/.idea/
+*.csproj
+*.sln
+*.slnx
+*.user
+*.pidb
+*.booproj
+*.unityproj
+*.suo
+*.userprefs
+
+# Built from native/GrappleRacerNative.cpp; importer .meta files stay tracked.
+/unity/Assets/Plugins/Android/arm64-v8a/libGrappleRacerNative.so
+/unity/Assets/Plugins/macOS/libGrappleRacerNative.dylib
+
+# Python and operating-system caches.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+._*
+Thumbs.db
+
+# Local configuration, credentials, and signing material.
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.pem
+*.key
+*.mobileprovision
+*.log

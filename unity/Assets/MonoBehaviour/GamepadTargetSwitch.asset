@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: GamepadTargetSwitch
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: feab73fdc23914646b7c942f49e30f31, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 105d2f15e10856a4aa08683b7182c988, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: cd615eeb59a317546aeb840125a96a5a, type: 1}
+    m_volumeScale: 1
+  m_priority: 128
+  m_interuptEqualPriority: 0
+  m_pitch: 2
+  m_volumeScale: 0.15

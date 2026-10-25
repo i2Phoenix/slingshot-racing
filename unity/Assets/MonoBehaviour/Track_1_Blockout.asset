@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70d3a7bb9137bb9c76d408ec50f6923, type: 1}
+  m_Name: Track_1_Blockout
+  m_splineData:
+  - m_name: TrackSpline
+    m_normalisedSpeeds:
+    - 1.5274414
+    - 1.5456252
+    - 1.5828799
+    - 1.7961264
+    - 1.6938744
+    - 1.2118483
+    - 0.9569087
+    - 0.88165045
+    - 0.89397776
+    - 0.91864634
+    - 0.90040195
+    - 0.92801595
+    - 1.0467594
+    - 1.0778799
+    - 0.98380506
+    - 0.8534877
+    - 0.77281296
+    - 0.72041726
+    - 0.8858901
+    - 0.9205152
+    - 0.7550424
+    - 0.84439576
+    - 0.8581979
+    - 1.1095756
+    - 1.4602764
+    - 1.4927269
+    m_segmentLength: 9.777221

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: MiniRewardAcquired
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: f70fab7d7a24d344e98cee5753300bc5, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 2a1ce57ea57d20547825a2c11a235ed5, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 7782f6a561f4aca45821e59a6264afad, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 83c5e6ec1b10c134fb5f379df4993fe6, type: 1}
+    m_volumeScale: 1
+  m_priority: 128
+  m_interuptEqualPriority: 1
+  m_pitch: 1
+  m_volumeScale: 0.3

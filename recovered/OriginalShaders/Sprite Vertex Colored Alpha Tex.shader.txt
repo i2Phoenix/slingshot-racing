@@ -1,0 +1,70 @@
+Shader "Sprite/Vertex Colored Alpha Tex" {
+Properties {
+ _MainTex ("Particle Texture", 2D) = "white" {}
+ _AlphaTex ("Alpha Texture", 2D) = "white" {}
+}
+SubShader { 
+ Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZTest Always
+  ZWrite Off
+  Cull Off
+  Fog {
+   Color (0,0,0,0)
+  }
+  Blend SrcAlpha OneMinusSrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying mediump vec2 xlv_TEXCOORD0;
+varying lowp vec4 xlv_COLOR0;
+
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  gl_Position = (gl_ModelViewProjectionMatrix * _glesVertex);
+  xlv_COLOR0 = _glesColor;
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying mediump vec2 xlv_TEXCOORD0;
+varying lowp vec4 xlv_COLOR0;
+uniform sampler2D _MainTex;
+uniform sampler2D _AlphaTex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  tmpvar_1.xyz = texture2D (_MainTex, xlv_TEXCOORD0).xyz;
+  tmpvar_1.w = texture2D (_AlphaTex, xlv_TEXCOORD0).x;
+  gl_FragData[0] = (tmpvar_1 * xlv_COLOR0);
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

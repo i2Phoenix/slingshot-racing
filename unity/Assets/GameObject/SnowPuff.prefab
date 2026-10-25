@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &147589
+GameObject:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 479954}
+  - 114: {fileID: 1509266}
+  - 114: {fileID: 1205782}
+  - 114: {fileID: 2661526}
+  m_Layer: 0
+  m_Name: SnowPuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &479954
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &1509266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24e1694065e35b54c80b35343362e4f, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
+  minSize: 0.2
+  maxSize: 0.3
+  minEnergy: 2
+  maxEnergy: 5
+  minEmission: 10
+  maxEmission: 20
+  worldVelocity: {x: 0, y: 0, z: 0}
+  localVelocity: {x: 0, y: 0, z: 3}
+  rndVelocity: {x: 3, y: 0, z: 3}
+  emitterVelocityScale: 0.05
+  tangentVelocity: {x: 0, y: 0, z: 0}
+  angularVelocity: 0
+  rndAngularVelocity: 0
+  rndRotation: 0
+  emit: 0
+  useWorldSpace: 1
+  oneShot: 1
+  ellipsoid: {x: 1, y: 1, z: 1}
+  minEmitterRange: 0
+--- !u!114 &1205782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a724cb734291dbe847bf942668ab287, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
+  worldRotationAxis: {x: 0, y: 0, z: 0}
+  localRotationAxis: {x: 0, y: 0, z: 0}
+  sizeGrow: 0
+  rndForce: {x: 2, y: 2, z: 2}
+  force: {x: 0, y: -1, z: 0}
+  damping: 0.5
+  stopSimulation: 0
+  autodestruct: 0
+  doesAnimateColor: 0
+  colorAnimation:
+  - {r: 1.0, g: 1.0, b: 1.0, a: 0.26666666666666666}
+  - {r: 1.0, g: 1.0, b: 1.0, a: 0.9921568627450981}
+  - {r: 1.0, g: 1.0, b: 1.0, a: 1.0}
+  - {r: 1.0, g: 1.0, b: 1.0, a: 0.7058823529411765}
+  - {r: 1.0, g: 1.0, b: 1.0, a: 0.0392156862745098}
+--- !u!114 &2661526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1170ca8d6223c94a8ada4e2111b886, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
+  sharedMaterial: {fileID: 2100000, guid: cf2146667f6c7a74bb11917c870e24c9, type: 2}
+  cameraVelocityScale: 0
+  particleRenderMode: 0
+  lengthScale: 2
+  velocityScale: 0
+  maxParticleSize: 0.25
+  uvAnimationXTile: 1
+  uvAnimationYTile: 1
+  uvAnimationCycles: 1
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 147589}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

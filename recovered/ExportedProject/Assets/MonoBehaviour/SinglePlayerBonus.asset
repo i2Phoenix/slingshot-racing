@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f0a179b4a5599c061853e5d28df2e9, type: 1}
+  m_Name: SinglePlayerBonus
+  m_displayName:
+  m_type: 0
+  m_eventUnlockType: 1
+  m_tours:
+  - {fileID: 11400000, guid: 268e230f8dc887940b4ae76180a817ca, type: 2}
+  - {fileID: 11400000, guid: fa9d91972872ba54f952059dffc258d9, type: 2}
+  - {fileID: 11400000, guid: d7981eb6455ab7e468ebf150ac9bffed, type: 2}
+  - {fileID: 11400000, guid: 6943e71c43c709a4eb4c9ed7cbabbe0d, type: 2}
+  m_totalNutsLeaderboard: {fileID: 0}

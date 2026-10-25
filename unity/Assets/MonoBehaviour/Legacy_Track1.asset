@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc32df4dc7181c5cf135f29bfb5a956f, type: 1}
+  m_Name: Legacy_Track1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0.7505541
+      value: -0.9835617
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: -0.446008
+      inSlope: 2.270584
+      outSlope: 2.270584
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  symmetric: 1
+  mirror: 0

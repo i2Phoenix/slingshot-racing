@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: SnowmanCollapsedHit
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: b543459e94960fc45b2060c043c0ca98, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 06a3d3e8f45a7eb48b836d4f3dd57c6e, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: b428f975e4d580245be5261480132aa2, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 55b3295732c8f9849aa361b6a031a2e4, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 1f3691bb23f3bbe40be6c0e701087289, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: e3c45fed44196ba449ccfa2942b9ab15, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 986baaf24e5613d4bbebf33cd71f5b79, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: cb305069789137242ab6800588736e3e, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: a5f423260b82a874ea17b2bc9fc384d3, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 63677df3c6ae8d1498b9f9831428f491, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 6389eff1f73257448b396fdadf5f8573, type: 1}
+    m_volumeScale: 1
+  m_priority: 128
+  m_interuptEqualPriority: 0
+  m_pitch: 1
+  m_volumeScale: 0.25

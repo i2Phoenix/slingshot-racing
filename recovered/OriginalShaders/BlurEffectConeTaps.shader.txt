@@ -1,0 +1,107 @@
+Shader "Hidden/BlurEffectConeTap" {
+Properties {
+ _MainTex ("", any) = "" {}
+}
+SubShader { 
+ Pass {
+  ZTest Always
+  ZWrite Off
+  Cull Off
+  Fog { Mode Off }
+  SetTexture [_MainTex] { ConstantColor (0,0,0,0.25) combine texture * constant alpha }
+  SetTexture [_MainTex] { ConstantColor (0,0,0,0.25) combine texture * constant + previous }
+  SetTexture [_MainTex] { ConstantColor (0,0,0,0.25) combine texture * constant + previous }
+  SetTexture [_MainTex] { ConstantColor (0,0,0,0.25) combine texture * constant + previous }
+ }
+}
+SubShader { 
+ Pass {
+  ZTest Always
+  ZWrite Off
+  Cull Off
+  Fog { Mode Off }
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying mediump vec2 xlv_TEXCOORD1_3;
+varying mediump vec2 xlv_TEXCOORD1_2;
+varying mediump vec2 xlv_TEXCOORD1_1;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+
+uniform mediump vec4 _MainTex_TexelSize;
+uniform mediump vec4 _BlurOffsets;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesVertex;
+void main ()
+{
+  mediump vec2 tmpvar_1[4];
+  mediump vec2 tmpvar_2;
+  tmpvar_2 = (_glesMultiTexCoord0.xy - (_BlurOffsets.xy * _MainTex_TexelSize.xy));
+  tmpvar_1[0] = (tmpvar_2 + (_MainTex_TexelSize.xy * _BlurOffsets.xy));
+  tmpvar_1[1] = (tmpvar_2 - (_MainTex_TexelSize.xy * _BlurOffsets.xy));
+  tmpvar_1[2] = (tmpvar_2 + ((_MainTex_TexelSize.xy * _BlurOffsets.xy) * vec2(1.0, -1.0)));
+  tmpvar_1[3] = (tmpvar_2 - ((_MainTex_TexelSize.xy * _BlurOffsets.xy) * vec2(1.0, -1.0)));
+  gl_Position = (gl_ModelViewProjectionMatrix * _glesVertex);
+  xlv_TEXCOORD0 = tmpvar_2;
+  xlv_TEXCOORD1 = tmpvar_1[0];
+  xlv_TEXCOORD1_1 = tmpvar_1[1];
+  xlv_TEXCOORD1_2 = tmpvar_1[2];
+  xlv_TEXCOORD1_3 = tmpvar_1[3];
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying mediump vec2 xlv_TEXCOORD1_3;
+varying mediump vec2 xlv_TEXCOORD1_2;
+varying mediump vec2 xlv_TEXCOORD1_1;
+varying mediump vec2 xlv_TEXCOORD1;
+uniform sampler2D _MainTex;
+void main ()
+{
+  mediump vec2 tmpvar_1[4];
+  tmpvar_1[0] = xlv_TEXCOORD1;
+  tmpvar_1[1] = xlv_TEXCOORD1_1;
+  tmpvar_1[2] = xlv_TEXCOORD1_2;
+  tmpvar_1[3] = xlv_TEXCOORD1_3;
+  mediump vec4 color;
+  lowp vec4 tmpvar_2;
+  tmpvar_2 = texture2D (_MainTex, tmpvar_1[0]);
+  color = tmpvar_2;
+  lowp vec4 tmpvar_3;
+  tmpvar_3 = texture2D (_MainTex, tmpvar_1[1]);
+  lowp vec4 tmpvar_4;
+  tmpvar_4 = texture2D (_MainTex, tmpvar_1[2]);
+  lowp vec4 tmpvar_5;
+  tmpvar_5 = texture2D (_MainTex, tmpvar_1[3]);
+  mediump vec4 tmpvar_6;
+  tmpvar_6 = (((color + tmpvar_3) + tmpvar_4) + tmpvar_5);
+  color = tmpvar_6;
+  gl_FragData[0] = (tmpvar_6 * 0.25);
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+Fallback Off
+}

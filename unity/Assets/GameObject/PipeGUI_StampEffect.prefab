@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &147589
+GameObject:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 479954}
+  - 114: {fileID: 11409266}
+  - 114: {fileID: 11405782}
+  - 114: {fileID: 11461526}
+  m_Layer: 11
+  m_Name: PipeGUI_StampEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &479954
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &11409266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bb14547a165fcce3304a27ccb6b1bc, type: 1}
+  m_Name:
+  m_transitionsArray:
+  - list:
+    - name: OnClicked
+      animationTypes: 0a000000
+      animParams:
+      - mode: 2
+        delay: 0
+        duration: 0.8
+        pingPong: 0
+        restartOnRepeat: 0
+        repeatDelay: 0
+        easing: 1
+        color: {r: 1, g: 1, b: 1, a: 1}
+        color2: {r: 1, g: 1, b: 1, a: 1}
+        vec: {x: 0.1, y: 0.1, z: 0}
+        vec2: {x: 0, y: 0, z: 6}
+        axis: {x: 0, y: 0, z: 0}
+        floatVal: 0
+        floatVal2: 0
+        strVal:
+      initialized: 1
+    - name: AwardFanfare
+      animationTypes: 090000001200000009000000
+      animParams:
+      - mode: 2
+        delay: 0.1
+        duration: 0.2
+        pingPong: 0
+        restartOnRepeat: 0
+        repeatDelay: 0
+        easing: 1
+        color: {r: 1, g: 1, b: 1, a: 1}
+        color2: {r: 1, g: 1, b: 1, a: 1}
+        vec: {x: 3, y: 3, z: 1}
+        vec2: {x: 1, y: 1, z: 1}
+        axis: {x: 0, y: 0, z: 0}
+        floatVal: 0
+        floatVal2: 0
+        strVal:
+      - mode: 2
+        delay: 0
+        duration: 0.1
+        pingPong: 0
+        restartOnRepeat: 0
+        repeatDelay: 0
+        easing: 39
+        color: {r: 1, g: 1, b: 1, a: 0}
+        color2: {r: 1, g: 1, b: 1, a: 1}
+        vec: {x: 0, y: 0, z: 0}
+        vec2: {x: 0, y: 0, z: 0}
+        axis: {x: 0, y: 0, z: 0}
+        floatVal: 0
+        floatVal2: 0
+        strVal:
+      - mode: 2
+        delay: 0
+        duration: 0
+        pingPong: 0
+        restartOnRepeat: 0
+        repeatDelay: 0
+        easing: 0
+        color: {r: 1, g: 1, b: 1, a: 1}
+        color2: {r: 1, g: 1, b: 1, a: 1}
+        vec: {x: 3, y: 3, z: 1}
+        vec2: {x: 3, y: 3, z: 1}
+        axis: {x: 0, y: 0, z: 0}
+        floatVal: 0
+        floatVal2: 0
+        strVal:
+      initialized: 1
+  m_states:
+  - Animation
+--- !u!114 &11405782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1e4d267044b5ab43785ad28474951f, type: 1}
+  m_Name:
+--- !u!114 &11461526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796a067ae7afe1200c7a717633e8352c, type: 1}
+  m_Name:
+  m_transitions: {fileID: 11409266}
+  m_awardFanfareAudioBank: {fileID: 11400000, guid: 8208c69fa683ac7458e41f5d2c84d79b, type: 2}
+  m_stampEffectPrefab1: {fileID: 147589, guid: 07f780ddeeddffd4eb9c66a14765ef19, type: 2}
+  m_stampEffectPrefab2: {fileID: 147589, guid: 7c0b172ea94e2bd44ab72f2bb00b3cec, type: 2}
+  m_stampAudioTime: 0.2
+  m_stampParticleTime1: 0.15
+  m_stampParticleTime2: 0.375
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 147589}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

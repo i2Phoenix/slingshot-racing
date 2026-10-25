@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Take 001
+  m_Compressed: 0
+  m_RotationCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -3.846082E-31, y: -2.220446E-16, z: -1.7321214E-15, w: 1}
+        inSlope: {x: 1.7437351E-16, y: 2.2826212E-18, z: 0.7853085, w: -0.010280012}
+        outSlope: {x: 1.7437351E-16, y: 2.2826212E-18, z: 0.7853085, w: -0.010280012}
+        tangentMode: 0
+      - time: 0.5666667
+        value: {x: 9.559267E-17, y: -2.0041419E-16, z: 0.43051112, w: 0.90258527}
+        inSlope: {x: 1.5738703E-16, y: 7.5069625E-17, z: 0.7088077, w: -0.33808354}
+        outSlope: {x: 1.5738703E-16, y: 7.5069625E-17, z: 0.7088077, w: -0.33808354}
+        tangentMode: 0
+      - time: 1.5666667
+        value: {x: 2.0930846E-16, y: -7.4120015E-17, z: 0.9426415, w: 0.33380687}
+        inSlope: {x: 5.8207204E-17, y: 1.6437143E-16, z: 0.26214194, w: -0.7402636}
+        outSlope: {x: 5.8207204E-17, y: 1.6437143E-16, z: 0.26214194, w: -0.7402636}
+        tangentMode: 0
+      - time: 2.5666668
+        value: {x: 2.0041419E-16, y: 9.5592704E-17, z: 0.90258527, w: -0.43051124}
+        inSlope: {x: -7.506989E-17, y: 1.5738717E-16, z: -0.33808473, w: -0.70880836}
+        outSlope: {x: -7.506989E-17, y: 1.5738717E-16, z: -0.33808473, w: -0.70880836}
+        tangentMode: 0
+      - time: 3.5666668
+        value: {x: 7.411996E-17, y: 2.093085E-16, z: 0.33380663, w: -0.9426416}
+        inSlope: {x: -1.6437103E-16, y: 5.82069E-17, z: -0.7402613, w: -0.26214057}
+        outSlope: {x: -1.6437103E-16, y: 5.82069E-17, z: -0.7402613, w: -0.26214057}
+        tangentMode: 0
+      - time: 4
+        value: {x: 2.7192623E-32, y: 2.220446E-16, z: 1.2246469E-16, w: -1}
+        inSlope: {x: -1.7437314E-16, y: 2.2826398E-18, z: -0.7853068, w: -0.010280096}
+        outSlope: {x: -1.7437314E-16, y: 2.2826398E-18, z: -0.7853068, w: -0.010280096}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: GR_Tower_Dummy_001/GR_Tower_Arrow_Left_001
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -3.846082E-31, y: -2.220446E-16, z: -1.7321214E-15, w: 1}
+        inSlope: {x: 1.7437351E-16, y: 2.2826212E-18, z: 0.7853085, w: -0.010280012}
+        outSlope: {x: 1.7437351E-16, y: 2.2826212E-18, z: 0.7853085, w: -0.010280012}
+        tangentMode: 0
+      - time: 0.5666667
+        value: {x: 9.559267E-17, y: -2.0041419E-16, z: 0.43051112, w: 0.90258527}
+        inSlope: {x: 1.5738703E-16, y: 7.5069625E-17, z: 0.7088077, w: -0.33808354}
+        outSlope: {x: 1.5738703E-16, y: 7.5069625E-17, z: 0.7088077, w: -0.33808354}
+        tangentMode: 0
+      - time: 1.5666667
+        value: {x: 2.0930846E-16, y: -7.4120015E-17, z: 0.9426415, w: 0.33380687}
+        inSlope: {x: 5.8207204E-17, y: 1.6437143E-16, z: 0.26214194, w: -0.7402636}
+        outSlope: {x: 5.8207204E-17, y: 1.6437143E-16, z: 0.26214194, w: -0.7402636}
+        tangentMode: 0
+      - time: 2.5666668
+        value: {x: 2.0041419E-16, y: 9.5592704E-17, z: 0.90258527, w: -0.43051124}
+        inSlope: {x: -7.506989E-17, y: 1.5738717E-16, z: -0.33808473, w: -0.70880836}
+        outSlope: {x: -7.506989E-17, y: 1.5738717E-16, z: -0.33808473, w: -0.70880836}
+        tangentMode: 0
+      - time: 3.5666668
+        value: {x: 7.411996E-17, y: 2.093085E-16, z: 0.33380663, w: -0.9426416}
+        inSlope: {x: -1.6437103E-16, y: 5.82069E-17, z: -0.7402613, w: -0.26214057}
+        outSlope: {x: -1.6437103E-16, y: 5.82069E-17, z: -0.7402613, w: -0.26214057}
+        tangentMode: 0
+      - time: 4
+        value: {x: 2.7192623E-32, y: 2.220446E-16, z: 1.2246469E-16, w: -1}
+        inSlope: {x: -1.7437314E-16, y: 2.2826398E-18, z: -0.7853068, w: -0.010280096}
+        outSlope: {x: -1.7437314E-16, y: 2.2826398E-18, z: -0.7853068, w: -0.010280096}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: GR_Tower_Dummy_002/GR_Tower_Arrow_Left_002
+  m_CompressedRotationCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_SampleRate: 30
+  m_WrapMode: 2
+  m_Bounds:
+    m_Center: {x: -5.8039665, y: 2.4547038, z: 5.1264853}
+    m_Extent: {x: 22.882183, y: 1.0541596, z: 3.7600942}
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_Events: []

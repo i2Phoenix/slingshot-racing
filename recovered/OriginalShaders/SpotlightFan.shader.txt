@@ -1,0 +1,129 @@
+Shader "Custom/SpotlightFan" {
+Properties {
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+}
+SubShader { 
+ Tags { "QUEUE"="Geometry+90" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+ Pass {
+  Name "CG"
+  Tags { "QUEUE"="Geometry+90" "IGNOREPROJECTOR"="True" "RenderType"="Transparent" }
+  ZWrite Off
+  Blend One One
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec3 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform highp vec4 unity_Scale;
+
+uniform highp vec4 g_cameraPos;
+uniform highp mat4 _World2Object;
+uniform highp mat4 _Object2World;
+attribute vec4 _glesTANGENT;
+attribute vec4 _glesMultiTexCoord1;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesColor;
+attribute vec4 _glesVertex;
+void main ()
+{
+  vec4 tmpvar_1;
+  tmpvar_1.xyz = normalize (_glesTANGENT.xyz);
+  tmpvar_1.w = _glesTANGENT.w;
+  lowp vec3 tmpvar_2;
+  highp float dist;
+  mediump vec3 worldTangent;
+  mediump vec3 worldNormal;
+  highp float normalY;
+  highp vec4 worldPos;
+  highp vec4 tmpvar_3;
+  tmpvar_3.w = 1.0;
+  tmpvar_3.xyz = _glesVertex.xyz;
+  highp vec4 tmpvar_4;
+  tmpvar_4 = (_Object2World * tmpvar_3);
+  worldPos = tmpvar_4;
+  mediump float tmpvar_5;
+  if ((_glesMultiTexCoord1.x < 0.0)) {
+    tmpvar_5 = 0.0;
+  } else {
+    tmpvar_5 = _glesMultiTexCoord1.x;
+  };
+  normalY = tmpvar_5;
+  mediump float tmpvar_6;
+  tmpvar_6 = sqrt ((1.0 - (_glesMultiTexCoord1.y * _glesMultiTexCoord1.y)));
+  highp vec3 tmpvar_7;
+  tmpvar_7.x = tmpvar_6;
+  tmpvar_7.y = normalY;
+  tmpvar_7.z = _glesMultiTexCoord1.y;
+  worldNormal = tmpvar_7;
+  mat3 tmpvar_8;
+  tmpvar_8[0] = _Object2World[0].xyz;
+  tmpvar_8[1] = _Object2World[1].xyz;
+  tmpvar_8[2] = _Object2World[2].xyz;
+  highp vec3 tmpvar_9;
+  tmpvar_9 = (tmpvar_8 * (tmpvar_1 * unity_Scale.w).xyz);
+  worldTangent = tmpvar_9;
+  highp vec3 tmpvar_10;
+  tmpvar_10 = normalize ((g_cameraPos.xyz - tmpvar_4.xyz));
+  highp vec3 tmpvar_11;
+  if ((_glesMultiTexCoord1.x < 0.0)) {
+    tmpvar_11 = vec3(0.0, 1.0, 0.0);
+  } else {
+    tmpvar_11 = tmpvar_10;
+  };
+  highp vec3 tmpvar_12;
+  tmpvar_12 = normalize (cross (tmpvar_11, worldTangent));
+  highp float tmpvar_13;
+  tmpvar_13 = dot (worldTangent, tmpvar_10);
+  lowp float tmpvar_14;
+  tmpvar_14 = (_glesColor.w * 32.0);
+  dist = tmpvar_14;
+  worldPos.xyz = (tmpvar_4.xyz + ((((worldNormal.x * worldTangent) + (worldNormal.y * (cross (worldTangent, tmpvar_12) * clamp (-(tmpvar_13), 0.0, 1.0)))) + (worldNormal.z * tmpvar_12)) * dist));
+  worldPos.xyz = (worldPos.xyz + (tmpvar_10 * 0.2));
+  highp vec4 tmpvar_15;
+  tmpvar_15.w = 1.0;
+  tmpvar_15.xyz = (_World2Object * worldPos).xyz;
+  highp vec3 tmpvar_16;
+  tmpvar_16 = (_glesColor.xyz * ((1.0 - pow (abs (tmpvar_13), 4.0)) * 2.0));
+  tmpvar_2 = tmpvar_16;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_15);
+  xlv_TEXCOORD0 = _glesMultiTexCoord0.xy;
+  xlv_TEXCOORD1 = tmpvar_2;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec3 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D _MainTex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  tmpvar_1.w = 1.0;
+  tmpvar_1.xyz = (texture2D (_MainTex, xlv_TEXCOORD0).xyz * xlv_TEXCOORD1);
+  gl_FragData[0] = tmpvar_1;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

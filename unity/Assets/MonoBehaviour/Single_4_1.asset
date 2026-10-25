@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd6f1e90e061a568bfe72b0a67e7040, type: 1}
+  m_Name: Single_4_1
+  m_pointsToUnlock: 96
+  m_major: 4
+  m_minor: 1
+  m_type: 0
+  m_races:
+  - {fileID: 11400000, guid: 59864fd5633fc3049a061232581e883a, type: 2}
+  - {fileID: 11400000, guid: dc19ef9281f13fc4886ec5faba431b43, type: 2}
+  - {fileID: 11400000, guid: 3e63a04c6775baa45803df53c277962f, type: 2}
+  - {fileID: 11400000, guid: 8d377ffe24d959343880380e63fc9bdb, type: 2}
+  m_allCompleteAchievement: {fileID: 11400000, guid: 7e6fd43b82fce044f9ac969e574be26d, type: 2}
+  m_allMasteredAchievement: {fileID: 11400000, guid: 02c1f66e939ed4647950c5488817a2bd, type: 2}

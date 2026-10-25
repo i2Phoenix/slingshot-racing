@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &147589
+GameObject:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 479954}
+  - 114: {fileID: 1509266}
+  - 114: {fileID: 1205782}
+  - 114: {fileID: 2661526}
+  - 114: {fileID: 11454010}
+  - 114: {fileID: 11419550}
+  m_Layer: 0
+  m_Name: BoostParticles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &479954
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_LocalRotation: {x: 0.13052633, y: 0, z: 0, w: -0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &1509266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24e1694065e35b54c80b35343362e4f, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
+  minSize: 0.3
+  maxSize: 0.5
+  minEnergy: 0.8
+  maxEnergy: 1
+  minEmission: 9
+  maxEmission: 11
+  worldVelocity: {x: 0, y: 0, z: 0}
+  localVelocity: {x: 0, y: 0, z: 15}
+  rndVelocity: {x: 0.8, y: 0.8, z: 0.8}
+  emitterVelocityScale: 0.05
+  tangentVelocity: {x: 0, y: 0, z: 0}
+  angularVelocity: 0
+  rndAngularVelocity: 0
+  rndRotation: 0
+  emit: 1
+  useWorldSpace: 1
+  oneShot: 0
+  ellipsoid: {x: 0.1, y: 0.1, z: 0.1}
+  minEmitterRange: 0
+--- !u!114 &1205782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a724cb734291dbe847bf942668ab287, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
+  worldRotationAxis: {x: 0, y: 0, z: 0}
+  localRotationAxis: {x: 0, y: 0, z: 0}
+  sizeGrow: 2.5
+  rndForce: {x: 0, y: 0, z: 0}
+  force: {x: 0, y: -5, z: 0}
+  damping: 0.3
+  stopSimulation: 0
+  autodestruct: 0
+  doesAnimateColor: 0
+  colorAnimation:
+  - {r: 1.0, g: 1.0, b: 1.0, a: 0.5764705882352941}
+  - {r: 1.0, g: 1.0, b: 1.0, a: 0.8156862745098039}
+  - {r: 1.0, g: 1.0, b: 1.0, a: 1.0}
+  - {r: 1.0, g: 1.0, b: 1.0, a: 0.8313725490196079}
+  - {r: 1.0, g: 1.0, b: 1.0, a: 0.0}
+--- !u!114 &2661526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1170ca8d6223c94a8ada4e2111b886, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
+  sharedMaterial: {fileID: 2100000, guid: 5dc504ddbc5eacd49b6f5576f90eb36f, type: 2}
+  cameraVelocityScale: 0
+  particleRenderMode: 3
+  lengthScale: 1
+  velocityScale: 0.2
+  maxParticleSize: 0.25
+  uvAnimationXTile: 4
+  uvAnimationYTile: 4
+  uvAnimationCycles: 1
+--- !u!114 &11454010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e206fb5cdfb51eaeab7d0104c4e03af1, type: 1}
+  m_Name:
+--- !u!114 &11419550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2074c59029cd3becb0fd333b018e5fe1, type: 1}
+  m_Name:
+  m_lowRateScale: 0.8
+  m_mediumRateScale: 0.9
+  m_highRateScale: 1
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 147589}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

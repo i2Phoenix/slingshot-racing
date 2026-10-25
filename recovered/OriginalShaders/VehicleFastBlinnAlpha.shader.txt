@@ -1,0 +1,544 @@
+Shader "Custom/VehicleFastBlinnAlpha" {
+Properties {
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+ _GlossTex ("Gloss (G)", 2D) = "white" {}
+ _Lightmap ("Lightmap (RGB)", 2D) = "lightmap" { TexGen ObjectLinear }
+ _SpecPower ("Specular Power", Range(0,128)) = 48
+ _UOffset ("UOffset", Float) = 0
+}
+SubShader { 
+ Tags { "QUEUE"="Geometry+40" "RenderType"="Opaque" }
+ UsePass "Custom/DepthFill/BASE"
+ Pass {
+  Tags { "QUEUE"="Geometry+40" "RenderType"="Opaque" }
+  ZWrite Off
+  Blend SrcAlpha OneMinusSrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+Keywords { "DISABLE_CONSTANT_EXTRACTION" }
+"!!GLES
+#define DISABLE_CONSTANT_EXTRACTION
+
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+#line 29
+
+			
+			#define ENABLE_ALPHA
+			
+			// #pragma multi_compile DISABLE_CONSTANT_EXTRACTION ENABLE_CONSTANT_EXTRACTION
+			
+			// interpolators
+varying lowp vec4 i_colour;
+varying mediump vec2 i_mainUV;
+varying mediump vec2 i_lightmapUV;
+
+// uniforms
+uniform highp vec4 g_highlightDirection;
+
+#ifdef ENABLE_ALPHA
+uniform lowp float _Alpha;
+#endif
+
+#ifndef IS_CHOMPER
+uniform highp float _UOffset;
+#endif
+
+#ifdef ENABLE_CONSTANT_EXTRACTION
+uniform highp vec3 p_lightDirOS;
+uniform highp vec3 p_halfVecOS;
+#endif
+
+
+
+		
+			
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+#define gl_Vertex _glesVertex
+attribute vec4 _glesVertex;
+#define gl_Normal _glesNormal
+attribute vec3 _glesNormal;
+#define gl_MultiTexCoord0 _glesMultiTexCoord0
+attribute vec4 _glesMultiTexCoord0;
+   
+// custom uniform variables
+uniform highp float _SpecPower;
+uniform highp vec4 p_lmMatR1;
+uniform highp vec4 p_lmMatR2;
+
+// unity uniforms
+uniform highp mat4 _Object2World;
+uniform highp mat4 _World2Object;
+uniform highp vec3 _WorldSpaceCameraPos;
+
+void main()
+{
+  #ifdef ENABLE_CONSTANT_EXTRACTION
+    vec3 lightDirOS = p_lightDirOS;
+ vec3 halfVecOS = p_halfVecOS;
+ vec4 lmMatR1 = p_lmMatR1;
+ vec4 lmMatR2 = p_lmMatR2;
+  #else
+ vec3 lightDirOS = (_World2Object * vec4(g_highlightDirection.xyz,0.0)).xyz;
+ vec3 camPosOS = (_World2Object * vec4(_WorldSpaceCameraPos,1.0)).xyz;
+ vec3 halfVecOS = normalize(normalize(camPosOS) - lightDirOS.xyz);
+ vec4 lmMatR1 = p_lmMatR1 * _Object2World;
+ vec4 lmMatR2 = p_lmMatR2 * _Object2World; 
+  #endif
+  
+ gl_Position = gl_ModelViewProjectionMatrix * vec4(gl_Vertex.xyz,1.0);
+  #ifndef IS_CHOMPER
+ gl_Position.z -= 0.005; // zbias
+  #endif
+ 
+  #ifndef IS_CHOMPER
+ i_mainUV.x = gl_MultiTexCoord0.x + (gl_MultiTexCoord0.y < 0.75 ? _UOffset : 0.0);
+ i_mainUV.y = gl_MultiTexCoord0.y;
+  #else
+ i_mainUV = gl_MultiTexCoord0.xy;
+  #endif
+ 
+ i_lightmapUV.x = dot(lmMatR1, vec4(gl_Vertex.xyz,1.0));
+ i_lightmapUV.y = dot(lmMatR2, vec4(gl_Vertex.xyz,1.0));
+ 
+ i_colour.rgb = vec3(max(dot(-lightDirOS.xyz, gl_Normal), 0.0));
+ float specDot = max(dot(halfVecOS, gl_Normal), 0.0);
+ i_colour.a = pow(specDot, _SpecPower);
+}
+
+#endif
+#ifdef FRAGMENT
+
+
+
+// Decodes lightmaps:
+// - doubleLDR encoded on GLES
+// - RGBM encoded with range [0;8] on other platforms using surface shaders
+lowp vec3 DecodeLightmapHalf( lowp vec4 color )
+{
+#if defined(SHADER_API_GLES)
+ return color.rgb;
+#else
+ // potentially faster to do the scalar multiplication
+ // in parenthesis for scalar GPUs
+ return (4.0 * color.a) * color.rgb;
+#endif
+}
+
+
+uniform sampler2D _MainTex;
+uniform sampler2D _GlossTex;
+uniform sampler2D _Lightmap;
+
+void main()
+{
+ lowp vec3 diffuseTex = texture2D(_MainTex, i_mainUV).rgb;
+ lowp vec3 specularTex = texture2D(_GlossTex, i_mainUV).rgb;
+ lowp float lightmapScale = g_highlightDirection.w; // this should be extracted by the compiler
+ lowp vec3 lightmap = lightmapScale * DecodeLightmapHalf(texture2D(_Lightmap, i_lightmapUV));
+ gl_FragData[0].rgb = (diffuseTex*i_colour.rgb + specularTex*i_colour.a) * lightmap;
+  #ifdef ENABLE_ALPHA
+ gl_FragData[0].a = _Alpha;
+  #else
+   gl_FragData[0].a = 1.0;
+  #endif
+}
+
+
+#endif"
+}
+SubProgram "gles " {
+Keywords { "ENABLE_CONSTANT_EXTRACTION" }
+"!!GLES
+#define ENABLE_CONSTANT_EXTRACTION
+
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+#line 29
+
+			
+			#define ENABLE_ALPHA
+			
+			// #pragma multi_compile DISABLE_CONSTANT_EXTRACTION ENABLE_CONSTANT_EXTRACTION
+			
+			// interpolators
+varying lowp vec4 i_colour;
+varying mediump vec2 i_mainUV;
+varying mediump vec2 i_lightmapUV;
+
+// uniforms
+uniform highp vec4 g_highlightDirection;
+
+#ifdef ENABLE_ALPHA
+uniform lowp float _Alpha;
+#endif
+
+#ifndef IS_CHOMPER
+uniform highp float _UOffset;
+#endif
+
+#ifdef ENABLE_CONSTANT_EXTRACTION
+uniform highp vec3 p_lightDirOS;
+uniform highp vec3 p_halfVecOS;
+#endif
+
+
+
+		
+			
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+#define gl_Vertex _glesVertex
+attribute vec4 _glesVertex;
+#define gl_Normal _glesNormal
+attribute vec3 _glesNormal;
+#define gl_MultiTexCoord0 _glesMultiTexCoord0
+attribute vec4 _glesMultiTexCoord0;
+   
+// custom uniform variables
+uniform highp float _SpecPower;
+uniform highp vec4 p_lmMatR1;
+uniform highp vec4 p_lmMatR2;
+
+// unity uniforms
+uniform highp mat4 _Object2World;
+uniform highp mat4 _World2Object;
+uniform highp vec3 _WorldSpaceCameraPos;
+
+void main()
+{
+  #ifdef ENABLE_CONSTANT_EXTRACTION
+    vec3 lightDirOS = p_lightDirOS;
+ vec3 halfVecOS = p_halfVecOS;
+ vec4 lmMatR1 = p_lmMatR1;
+ vec4 lmMatR2 = p_lmMatR2;
+  #else
+ vec3 lightDirOS = (_World2Object * vec4(g_highlightDirection.xyz,0.0)).xyz;
+ vec3 camPosOS = (_World2Object * vec4(_WorldSpaceCameraPos,1.0)).xyz;
+ vec3 halfVecOS = normalize(normalize(camPosOS) - lightDirOS.xyz);
+ vec4 lmMatR1 = p_lmMatR1 * _Object2World;
+ vec4 lmMatR2 = p_lmMatR2 * _Object2World; 
+  #endif
+  
+ gl_Position = gl_ModelViewProjectionMatrix * vec4(gl_Vertex.xyz,1.0);
+  #ifndef IS_CHOMPER
+ gl_Position.z -= 0.005; // zbias
+  #endif
+ 
+  #ifndef IS_CHOMPER
+ i_mainUV.x = gl_MultiTexCoord0.x + (gl_MultiTexCoord0.y < 0.75 ? _UOffset : 0.0);
+ i_mainUV.y = gl_MultiTexCoord0.y;
+  #else
+ i_mainUV = gl_MultiTexCoord0.xy;
+  #endif
+ 
+ i_lightmapUV.x = dot(lmMatR1, vec4(gl_Vertex.xyz,1.0));
+ i_lightmapUV.y = dot(lmMatR2, vec4(gl_Vertex.xyz,1.0));
+ 
+ i_colour.rgb = vec3(max(dot(-lightDirOS.xyz, gl_Normal), 0.0));
+ float specDot = max(dot(halfVecOS, gl_Normal), 0.0);
+ i_colour.a = pow(specDot, _SpecPower);
+}
+
+#endif
+#ifdef FRAGMENT
+
+
+
+// Decodes lightmaps:
+// - doubleLDR encoded on GLES
+// - RGBM encoded with range [0;8] on other platforms using surface shaders
+lowp vec3 DecodeLightmapHalf( lowp vec4 color )
+{
+#if defined(SHADER_API_GLES)
+ return color.rgb;
+#else
+ // potentially faster to do the scalar multiplication
+ // in parenthesis for scalar GPUs
+ return (4.0 * color.a) * color.rgb;
+#endif
+}
+
+
+uniform sampler2D _MainTex;
+uniform sampler2D _GlossTex;
+uniform sampler2D _Lightmap;
+
+void main()
+{
+ lowp vec3 diffuseTex = texture2D(_MainTex, i_mainUV).rgb;
+ lowp vec3 specularTex = texture2D(_GlossTex, i_mainUV).rgb;
+ lowp float lightmapScale = g_highlightDirection.w; // this should be extracted by the compiler
+ lowp vec3 lightmap = lightmapScale * DecodeLightmapHalf(texture2D(_Lightmap, i_lightmapUV));
+ gl_FragData[0].rgb = (diffuseTex*i_colour.rgb + specularTex*i_colour.a) * lightmap;
+  #ifdef ENABLE_ALPHA
+ gl_FragData[0].a = _Alpha;
+  #else
+   gl_FragData[0].a = 1.0;
+  #endif
+}
+
+
+#endif"
+}
+}
+ }
+}
+SubShader { 
+ Tags { "QUEUE"="Geometry+40" "RenderType"="Opaque" }
+ UsePass "Custom/DepthFill/BASE"
+ Pass {
+  Tags { "QUEUE"="Geometry+40" "RenderType"="Opaque" }
+  ZWrite Off
+  Blend SrcAlpha OneMinusSrcAlpha, Zero One
+Program "vp" {
+SubProgram "gles " {
+Keywords { "DISABLE_CONSTANT_EXTRACTION" }
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec4 xlv_COLOR0;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform highp vec4 p_lmMatR2;
+uniform highp vec4 p_lmMatR1;
+
+uniform highp vec4 g_highlightDirection;
+uniform highp vec3 _WorldSpaceCameraPos;
+uniform highp mat4 _World2Object;
+uniform highp float _UOffset;
+uniform highp float _SpecPower;
+uniform highp mat4 _Object2World;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec3 _glesNormal;
+attribute vec4 _glesVertex;
+void main ()
+{
+  vec3 tmpvar_1;
+  tmpvar_1 = normalize (_glesNormal);
+  highp vec4 tmpvar_2;
+  mediump vec2 tmpvar_3;
+  mediump vec2 tmpvar_4;
+  lowp vec4 tmpvar_5;
+  mat3 tmpvar_6;
+  tmpvar_6[0] = _World2Object[0].xyz;
+  tmpvar_6[1] = _World2Object[1].xyz;
+  tmpvar_6[2] = _World2Object[2].xyz;
+  highp vec3 tmpvar_7;
+  tmpvar_7 = (tmpvar_6 * g_highlightDirection.xyz);
+  highp vec4 tmpvar_8;
+  tmpvar_8.w = 1.0;
+  tmpvar_8.xyz = _WorldSpaceCameraPos;
+  highp vec3 tmpvar_9;
+  tmpvar_9 = normalize ((normalize ((_World2Object * tmpvar_8).xyz) - tmpvar_7));
+  highp vec4 tmpvar_10;
+  tmpvar_10 = (p_lmMatR1 * _Object2World);
+  highp vec4 tmpvar_11;
+  tmpvar_11 = (p_lmMatR2 * _Object2World);
+  highp vec4 tmpvar_12;
+  tmpvar_12.w = 1.0;
+  tmpvar_12.xyz = _glesVertex.xyz;
+  highp vec4 tmpvar_13;
+  tmpvar_13 = (gl_ModelViewProjectionMatrix * tmpvar_12);
+  tmpvar_2 = tmpvar_13;
+  tmpvar_2.z = (tmpvar_13.z - 0.005);
+  highp float tmpvar_14;
+  if ((_glesMultiTexCoord0.y < 0.75)) {
+    tmpvar_14 = _UOffset;
+  } else {
+    tmpvar_14 = 0.0;
+  };
+  highp float tmpvar_15;
+  tmpvar_15 = (_glesMultiTexCoord0.x + tmpvar_14);
+  tmpvar_3.x = tmpvar_15;
+  highp float tmpvar_16;
+  tmpvar_16 = _glesMultiTexCoord0.y;
+  tmpvar_3.y = tmpvar_16;
+  highp vec4 tmpvar_17;
+  tmpvar_17.w = 1.0;
+  tmpvar_17.xyz = _glesVertex.xyz;
+  highp float tmpvar_18;
+  tmpvar_18 = dot (tmpvar_10, tmpvar_17);
+  tmpvar_4.x = tmpvar_18;
+  highp vec4 tmpvar_19;
+  tmpvar_19.w = 1.0;
+  tmpvar_19.xyz = _glesVertex.xyz;
+  highp float tmpvar_20;
+  tmpvar_20 = dot (tmpvar_11, tmpvar_19);
+  tmpvar_4.y = tmpvar_20;
+  highp float tmpvar_21;
+  tmpvar_21 = max (dot (-(tmpvar_7), tmpvar_1), 0.0);
+  tmpvar_5.xyz = vec3(tmpvar_21);
+  highp float tmpvar_22;
+  tmpvar_22 = pow (max (dot (tmpvar_9, tmpvar_1), 0.0), _SpecPower);
+  tmpvar_5.w = tmpvar_22;
+  gl_Position = tmpvar_2;
+  xlv_TEXCOORD0 = tmpvar_3;
+  xlv_TEXCOORD1 = tmpvar_4;
+  xlv_COLOR0 = tmpvar_5;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec4 xlv_COLOR0;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform highp vec4 g_highlightDirection;
+uniform sampler2D _MainTex;
+uniform sampler2D _Lightmap;
+uniform sampler2D _GlossTex;
+uniform highp float _Alpha;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  lowp float lightmapScale;
+  highp float tmpvar_2;
+  tmpvar_2 = g_highlightDirection.w;
+  lightmapScale = tmpvar_2;
+  lowp vec3 tmpvar_3;
+  tmpvar_3 = (((texture2D (_MainTex, xlv_TEXCOORD0).xyz * xlv_COLOR0.xyz) + (texture2D (_GlossTex, xlv_TEXCOORD0).xyz * xlv_COLOR0.w)) * (lightmapScale * texture2D (_Lightmap, xlv_TEXCOORD1).xyz));
+  highp vec4 tmpvar_4;
+  tmpvar_4.xyz = tmpvar_3;
+  tmpvar_4.w = _Alpha;
+  tmpvar_1 = tmpvar_4;
+  gl_FragData[0] = tmpvar_1;
+}
+
+
+
+#endif"
+}
+SubProgram "gles " {
+Keywords { "ENABLE_CONSTANT_EXTRACTION" }
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying lowp vec4 xlv_COLOR0;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform highp vec4 p_lmMatR2;
+uniform highp vec4 p_lmMatR1;
+uniform highp vec3 p_lightDirOS;
+uniform highp vec3 p_halfVecOS;
+
+uniform highp float _UOffset;
+uniform highp float _SpecPower;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec3 _glesNormal;
+attribute vec4 _glesVertex;
+void main ()
+{
+  vec3 tmpvar_1;
+  tmpvar_1 = normalize (_glesNormal);
+  highp vec4 tmpvar_2;
+  mediump vec2 tmpvar_3;
+  mediump vec2 tmpvar_4;
+  lowp vec4 tmpvar_5;
+  highp vec4 tmpvar_6;
+  tmpvar_6.w = 1.0;
+  tmpvar_6.xyz = _glesVertex.xyz;
+  highp vec4 tmpvar_7;
+  tmpvar_7 = (gl_ModelViewProjectionMatrix * tmpvar_6);
+  tmpvar_2 = tmpvar_7;
+  tmpvar_2.z = (tmpvar_7.z - 0.005);
+  highp float tmpvar_8;
+  if ((_glesMultiTexCoord0.y < 0.75)) {
+    tmpvar_8 = _UOffset;
+  } else {
+    tmpvar_8 = 0.0;
+  };
+  highp float tmpvar_9;
+  tmpvar_9 = (_glesMultiTexCoord0.x + tmpvar_8);
+  tmpvar_3.x = tmpvar_9;
+  highp float tmpvar_10;
+  tmpvar_10 = _glesMultiTexCoord0.y;
+  tmpvar_3.y = tmpvar_10;
+  highp vec4 tmpvar_11;
+  tmpvar_11.w = 1.0;
+  tmpvar_11.xyz = _glesVertex.xyz;
+  highp float tmpvar_12;
+  tmpvar_12 = dot (p_lmMatR1, tmpvar_11);
+  tmpvar_4.x = tmpvar_12;
+  highp vec4 tmpvar_13;
+  tmpvar_13.w = 1.0;
+  tmpvar_13.xyz = _glesVertex.xyz;
+  highp float tmpvar_14;
+  tmpvar_14 = dot (p_lmMatR2, tmpvar_13);
+  tmpvar_4.y = tmpvar_14;
+  highp float tmpvar_15;
+  tmpvar_15 = max (dot (-(p_lightDirOS), tmpvar_1), 0.0);
+  tmpvar_5.xyz = vec3(tmpvar_15);
+  highp float tmpvar_16;
+  tmpvar_16 = pow (max (dot (p_halfVecOS, tmpvar_1), 0.0), _SpecPower);
+  tmpvar_5.w = tmpvar_16;
+  gl_Position = tmpvar_2;
+  xlv_TEXCOORD0 = tmpvar_3;
+  xlv_TEXCOORD1 = tmpvar_4;
+  xlv_COLOR0 = tmpvar_5;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying lowp vec4 xlv_COLOR0;
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform highp vec4 g_highlightDirection;
+uniform sampler2D _MainTex;
+uniform sampler2D _Lightmap;
+uniform sampler2D _GlossTex;
+uniform highp float _Alpha;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  lowp float lightmapScale;
+  highp float tmpvar_2;
+  tmpvar_2 = g_highlightDirection.w;
+  lightmapScale = tmpvar_2;
+  lowp vec3 tmpvar_3;
+  tmpvar_3 = (((texture2D (_MainTex, xlv_TEXCOORD0).xyz * xlv_COLOR0.xyz) + (texture2D (_GlossTex, xlv_TEXCOORD0).xyz * xlv_COLOR0.w)) * (lightmapScale * texture2D (_Lightmap, xlv_TEXCOORD1).xyz));
+  highp vec4 tmpvar_4;
+  tmpvar_4.xyz = tmpvar_3;
+  tmpvar_4.w = _Alpha;
+  tmpvar_1 = tmpvar_4;
+  gl_FragData[0] = tmpvar_1;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+Keywords { "DISABLE_CONSTANT_EXTRACTION" }
+"!!GLES"
+}
+SubProgram "gles " {
+Keywords { "ENABLE_CONSTANT_EXTRACTION" }
+"!!GLES"
+}
+}
+ }
+}
+}

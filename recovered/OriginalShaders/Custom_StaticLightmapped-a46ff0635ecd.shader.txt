@@ -1,0 +1,153 @@
+Shader "Custom/StaticLightmapped" {
+Properties {
+ _MainTex ("Base (RGB)", 2D) = "white" {}
+}
+SubShader { 
+ Pass {
+  Name "GLSL"
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+#line 20
+
+			
+			// interpolators
+			varying mediump vec2 i_mainUV;
+			varying mediump vec2 i_lightmapUV;
+			
+		  			
+		  			
+			
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+#define gl_Vertex _glesVertex
+attribute vec4 _glesVertex;
+#define gl_MultiTexCoord0 _glesMultiTexCoord0
+attribute vec4 _glesMultiTexCoord0;
+#define gl_MultiTexCoord1 _glesMultiTexCoord1
+attribute vec4 _glesMultiTexCoord1;
+   
+     
+   // unity variables
+   uniform highp vec4 unity_LightmapST;
+   
+   void main()
+   {
+    gl_Position = gl_ModelViewProjectionMatrix * vec4(gl_Vertex.xyz,1.0);
+    i_mainUV = gl_MultiTexCoord0.xy;
+    i_lightmapUV = gl_MultiTexCoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
+   }
+    
+#endif
+#ifdef FRAGMENT
+
+      
+// Decodes lightmaps:
+// - doubleLDR encoded on GLES
+// - RGBM encoded with range [0;8] on other platforms using surface shaders
+lowp vec3 DecodeLightmapHalf( lowp vec4 color )
+{
+#if defined(SHADER_API_GLES)
+ return color.rgb;
+#else
+ // potentially faster to do the scalar multiplication
+ // in parenthesis for scalar GPUs
+ return (4.0 * color.a) * color.rgb;
+#endif
+}
+
+      
+   uniform sampler2D _MainTex;
+   uniform sampler2D unity_Lightmap;
+   
+   void main()
+   {
+    // apply old Main Color term to both diffuse and specular, specular color adjusted by 255/150
+    // apply to lightmap so it can be combined with the *2.0 term in DecodeLightmap
+    lowp float c_mainColour = 2.0 * 150.0/255.0;
+    lowp vec3 lightmap = c_mainColour * DecodeLightmapHalf(texture2D(unity_Lightmap, i_lightmapUV));
+    lowp vec3 diffuse = texture2D(_MainTex, i_mainUV).rgb;
+    lowp vec3 colour = diffuse * lightmap;
+    gl_FragData[0].xyz = colour;
+    gl_FragData[0].w = 1.0;
+   }
+   
+     
+#endif"
+}
+}
+ }
+}
+SubShader { 
+ Pass {
+  Name "CG"
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+#define SHADER_API_GLES 1
+#define tex2D texture2D
+
+
+#ifdef VERTEX
+#define gl_ModelViewProjectionMatrix glstate_matrix_mvp
+uniform mat4 glstate_matrix_mvp;
+
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform highp vec4 unity_LightmapST;
+
+attribute vec4 _glesMultiTexCoord1;
+attribute vec4 _glesMultiTexCoord0;
+attribute vec4 _glesVertex;
+void main ()
+{
+  mediump vec2 tmpvar_1;
+  mediump vec2 tmpvar_2;
+  highp vec4 tmpvar_3;
+  tmpvar_3.w = 1.0;
+  tmpvar_3.xyz = _glesVertex.xyz;
+  highp vec2 tmpvar_4;
+  tmpvar_4 = _glesMultiTexCoord0.xy;
+  tmpvar_1 = tmpvar_4;
+  highp vec2 tmpvar_5;
+  tmpvar_5 = ((_glesMultiTexCoord1.xy * unity_LightmapST.xy) + unity_LightmapST.zw);
+  tmpvar_2 = tmpvar_5;
+  gl_Position = (gl_ModelViewProjectionMatrix * tmpvar_3);
+  xlv_TEXCOORD0 = tmpvar_1;
+  xlv_TEXCOORD1 = tmpvar_2;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+varying mediump vec2 xlv_TEXCOORD1;
+varying mediump vec2 xlv_TEXCOORD0;
+uniform sampler2D unity_Lightmap;
+uniform sampler2D _MainTex;
+void main ()
+{
+  lowp vec4 tmpvar_1;
+  tmpvar_1.w = 1.0;
+  tmpvar_1.xyz = ((texture2D (_MainTex, xlv_TEXCOORD0).xyz * 0.588235) * (2.0 * texture2D (unity_Lightmap, xlv_TEXCOORD1).xyz));
+  gl_FragData[0] = tmpvar_1;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+}
+ }
+}
+}

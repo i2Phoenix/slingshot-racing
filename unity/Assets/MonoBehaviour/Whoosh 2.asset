@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: Whoosh 2
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: 7f98398edb4070d439e57f4a5aa94895, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 5af87f1e59edc1e45b27af6c50aa3f33, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 960cde5ff5413de49830fd883f15e04d, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: d4772f834fc395e449d99e28528502bb, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 986203319e5cce64cb13ee2ac5ead224, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 8ec8987572645704280c28a1bce54a63, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 7917704f85a472942bd7c02ff69c1f01, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 0a0970bd109049b42b165a79bc022104, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 91e33ef7bcb03a246a3526175c36145f, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: f9b70089e95c5d240835219224c6085e, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: e7d90571fd8d98b4c92e85e3ae32533e, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: ef90951deb7ce6346912fadb830ed811, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 1c11ae172b1335d47b74a31f068ea12a, type: 1}
+    m_volumeScale: 1
+  m_priority: 128
+  m_interuptEqualPriority: 1
+  m_pitch: 0.8
+  m_volumeScale: 0.25

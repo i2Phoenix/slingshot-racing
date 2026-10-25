@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdf7dc83f388d82cbf0514be4c10062, type: 1}
+  m_Name: InfoClicked
+  m_clips:
+  - m_clip: {fileID: 8300000, guid: 283bd022aa270184bad866aac7ec2210, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: 6d1aa726eb155b34fa7d53249bad7f62, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: d0096cf924f05344a9091b3cffa87cc5, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: c9bceb773a73043448a323b3a65f4c99, type: 1}
+    m_volumeScale: 1
+  - m_clip: {fileID: 8300000, guid: f2bca46fda78aa448a8ddc1afc6427ba, type: 1}
+    m_volumeScale: 1
+  m_priority: 128
+  m_interuptEqualPriority: 0
+  m_pitch: 1
+  m_volumeScale: 1
