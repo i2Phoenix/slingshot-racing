@@ -76,7 +76,7 @@ See [Building and verification](docs/BUILDING.md) for Python dependencies, optio
 adb install -r builds/SlingshotRacing-modern-arm64.apk
 ```
 
-The application installs separately from the original and has its own save data. This repository does not publish APK downloads or store signing credentials.
+The application installs separately from the original and has its own save data. Download the ready-to-install ARM64 APK from [release v1.4.0.0](https://github.com/i2Phoenix/slingshot-racing/releases/tag/v1.4.0.0). Signing credentials are not stored in this repository.
 
 ## Validation status
 
