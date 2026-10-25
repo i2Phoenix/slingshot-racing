@@ -10,11 +10,11 @@ The original Slingshot Racing credits state:
 
 The original game, recovered code, artwork, levels, audio, logos, and other game materials retain their respective owners' rights. Crescent Moon Games is credited as the original publisher; additional music and contributor credits are recorded in [CREDITS.md](CREDITS.md).
 
-Recovery, modification, or inclusion in a private repository does not transfer ownership or grant permission to redistribute those materials. This project does not grant a new license for them or claim endorsement by the original rights holders.
+Recovery, modification, or inclusion in this repository does not transfer ownership or grant permission to redistribute those materials. This project does not grant a new license for them or claim endorsement by the original rights holders.
 
 ## Restoration work
 
-No general redistribution license is granted here for the restoration-specific code, translations, or documentation. Existing rights and any permissions granted separately by the relevant owners remain unaffected. An explicit license should be selected for eligible original contributions before any public source distribution; it must not be applied to third-party game material.
+No general redistribution license is granted here for the restoration-specific code, translations, or documentation. Existing rights and any permissions granted separately by the relevant owners remain unaffected. Any separately granted license for original contributions must identify its scope and must not be applied to third-party game material.
 
 ## Third-party components
 

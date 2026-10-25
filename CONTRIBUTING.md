@@ -8,6 +8,6 @@ Use [Building and verification](docs/BUILDING.md) to set up the pinned Unity edi
 - Run the resource and localization checks for affected assets. For native changes, rebuild the plugin and run numerical parity using the separately supplied original library.
 - Use a development APK for diagnostics. Validate release APK architecture, signing, absence of diagnostics, and 16 KB alignment before describing it as verified.
 - State which APK, device, and scenarios were tested. Do not turn an old report or a compilation result into a new gameplay claim.
-- Review [LICENSE.md](LICENSE.md) before sharing source or binaries outside this private repository.
+- Review [LICENSE.md](LICENSE.md) before redistributing source or binaries.
 
 Changes to services, purchases, game rules, and physics should be explicit and documented. The current build is an offline restoration with same-device multiplayer.

@@ -8,7 +8,7 @@ An unofficial port of **Slingshot Racing** whose purpose is to **preserve gaming
 
 The goal is to carry the original game's design, atmosphere, and local multiplayer forward as mobile platforms change. Compatibility work preserves its identity while making it usable on current hardware.
 
-This is a private development and preservation repository. It contains recovered game material as well as porting work; it is not an official release or a blanket open-source distribution. Original credits and ownership are preserved. See [Credits](CREDITS.md), [Rights and licensing](LICENSE.md), and [Third-party notices](THIRD_PARTY_NOTICES.md).
+This is an independent development and preservation repository. It contains recovered game material as well as porting work; it is not an official release or a blanket open-source distribution. Original credits and ownership are preserved. See [Credits](CREDITS.md), [Rights and licensing](LICENSE.md), and [Third-party notices](THIRD_PARTY_NOTICES.md).
 
 ## The original game
 
